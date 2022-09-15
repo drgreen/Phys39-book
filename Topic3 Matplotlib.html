@@ -1,0 +1,1083 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Plotting and Data Visualization &#8212; Physics 39 Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Physics 39 Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic0_Intro.html">
+   COGS 18: Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1a_Data.html">
+   Topic 1: Basics of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1b_Functions.html">
+   Topic 1b: Functions and Basic Operations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Topic3 Matplotlib.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTopic3 Matplotlib.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Topic3 Matplotlib.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#figure-and-axes">
+   Figure and Axes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histograms-scatter-plots-heat-maps-and-more">
+   Histograms, scatter plots, heat maps and more
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-figures">
+   3d figures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Plotting and Data Visualization</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#figure-and-axes">
+   Figure and Axes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histograms-scatter-plots-heat-maps-and-more">
+   Histograms, scatter plots, heat maps and more
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#d-figures">
+   3d figures
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="plotting-and-data-visualization">
+<h1>Plotting and Data Visualization<a class="headerlink" href="#plotting-and-data-visualization" title="Permalink to this headline">#</a></h1>
+<p>So far I have shown a figures here and there as a way to understand what our functions are doing.  We are now ready to look at making figures of all kinds for various applications.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># this is our standard ploting package</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The most basic object you can imagine is just making a line.  The way this is done is that we collect a bunch of (x,y) of the points along our curve as two lists / numpy arrays x_list, y_list:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">y_list</span><span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span><span class="n">y_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_5_0.png" src="_images/Topic3 Matplotlib_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_crazy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">y_crazy</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_crazy</span><span class="p">,</span><span class="n">y_crazy</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_7_0.png" src="_images/Topic3 Matplotlib_7_0.png" />
+</div>
+</div>
+<p>Seems simple enough.  We can plot any of your favorite functions pretty easily this way:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_10_0.png" src="_images/Topic3 Matplotlib_10_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_11_0.png" src="_images/Topic3 Matplotlib_11_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sinh</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;test.pdf&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_12_0.png" src="_images/Topic3 Matplotlib_12_0.png" />
+</div>
+</div>
+<section id="figure-and-axes">
+<h2>Figure and Axes<a class="headerlink" href="#figure-and-axes" title="Permalink to this headline">#</a></h2>
+<p>The above figures illustrate the most basic functionality of pypolt: we feed in two lists or arrays of the same length and it can figure out that it is a figure.  It is making a lot of choices automatically, but if we just want to see the lines, this is okay.  However, in practice, we also want to be able to make nice figures that show what we want in the way we want.  To do that, we will need to learn a lot more about pyplot.</p>
+<p>For many advanced applications, we will need to used the Axes object.  It is not always necessary, but most examples of cool plotting tricks use Axes and it will be hard to do those things on your own if you aren’t already comfortable with it.  Let us start by making a basic figure but using some more advanced tools.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.8</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_16_0.png" src="_images/Topic3 Matplotlib_16_0.png" />
+</div>
+</div>
+<p>This is just an empty plot.  But this is the starting point.  There are other ways to get here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span><span class="p">,</span><span class="n">ax2</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_18_0.png" src="_images/Topic3 Matplotlib_18_0.png" />
+</div>
+</div>
+<p>You might wonder why it is called “subplots”.  The reason is that I would call the same thing if I wanted many different panels inside one figure:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig3</span><span class="p">,</span><span class="n">ax3</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_20_0.png" src="_images/Topic3 Matplotlib_20_0.png" />
+</div>
+</div>
+<p>Now let’s start adding some lines to our figure:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.8</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_22_0.png" src="_images/Topic3 Matplotlib_22_0.png" />
+</div>
+</div>
+<p>The first thing we might want to do is to place the limits on the x-axis so that there aren’t the weird empty areas to the left and right of the line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.8</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># sets the x-axis range</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="c1"># sets the y-axis range</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_24_0.png" src="_images/Topic3 Matplotlib_24_0.png" />
+</div>
+</div>
+<p>Now we might want to make the lines look different: we can change the line width, the line style, the color and opacity</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.8</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span> <span class="c1"># ls = line style</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;sine&#39;</span><span class="p">)</span> <span class="c1"># lw =line width</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="c1"># sets the x-axis range</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">2.5</span><span class="p">)</span> <span class="c1"># sets the y-axis range</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># makes a legend using labels of the lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_26_0.png" src="_images/Topic3 Matplotlib_26_0.png" />
+</div>
+</div>
+<p>Lastly we will want to change the axes, tick marks and/or labels:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.8</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span> <span class="c1"># ls = line style</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;sine&#39;</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y-axis&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x-axis&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;here is a figure&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span> <span class="c1"># makes a legend using labels of the lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_28_0.png" src="_images/Topic3 Matplotlib_28_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="mf">0.8</span>
+<span class="n">ax</span><span class="o">=</span><span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">((</span><span class="n">left</span><span class="p">,</span><span class="n">bottom</span><span class="p">,</span><span class="n">width</span><span class="p">,</span><span class="n">height</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span> <span class="c1"># ls = line style</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;sine&#39;</span><span class="p">)</span> 
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">1.</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y-axis&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x-axis&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;here is a figure&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;$10^{-2}$&#39;</span><span class="p">,</span><span class="s1">&#39;0.1&#39;</span><span class="p">,</span><span class="s1">&#39;one&#39;</span><span class="p">],</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span> <span class="c1"># makes a legend using labels of the lines</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_29_0.png" src="_images/Topic3 Matplotlib_29_0.png" />
+</div>
+</div>
+<p>Hopefully you get the idea. You have a lot of control over the figure. It is also easy to generalize this to multi-panel figures as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig3</span><span class="p">,</span><span class="n">ax3</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">nrows</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">ax3</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
+
+<span class="n">ax3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">),</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;cosine&#39;</span><span class="p">)</span>
+<span class="n">ax3</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_31_0.png" src="_images/Topic3 Matplotlib_31_0.png" />
+</div>
+</div>
+</section>
+<section id="histograms-scatter-plots-heat-maps-and-more">
+<h2>Histograms, scatter plots, heat maps and more<a class="headerlink" href="#histograms-scatter-plots-heat-maps-and-more" title="Permalink to this headline">#</a></h2>
+<p>A histogram is a pretty useful way to plot a bunch of numbers.  Ie if we measure something a lot of times and we want to know how often it falls into a given range, we can make a histogram.  The easiest way to do it is just to tell it how many bins you want and it will automatically decide how to group your data into that number of bins:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_h</span><span class="p">,</span><span class="n">ax_h</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">ax_h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_34_0.png" src="_images/Topic3 Matplotlib_34_0.png" />
+</div>
+</div>
+<p>We can also give ourselves a bit more control of the bins as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_h</span><span class="p">,</span><span class="n">ax_h</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">),</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">))</span>
+    <span class="n">ax_h</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1000</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_36_0.png" src="_images/Topic3 Matplotlib_36_0.png" />
+</div>
+</div>
+<p>We can get the data that would make a histrogram using numpy:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([  1,   0,   1,   0,   1,   0,   1,   2,   1,   3,   1,   1,   8,
+          6,   1,   4,   5,  15,  14,  10,  24,  15,  27,  32,  34,  58,
+         49,  51,  66,  87,  83, 114, 127, 126, 123, 168, 146, 188, 175,
+        199, 207, 239, 265, 252, 280, 274, 297, 295, 321, 286, 285, 309,
+        283, 325, 313, 283, 314, 268, 248, 233, 237, 216, 235, 184, 158,
+        162, 154, 135, 134, 111, 107,  97,  68,  61,  64,  64,  49,  33,
+         30,  26,  26,  18,  19,  13,   4,  11,   8,   2,  10,   7,   3,
+          2,   1,   1,   0,   2,   2,   1,   0,   1]),
+ array([-3.95641787e+00, -3.87878654e+00, -3.80115521e+00, -3.72352388e+00,
+        -3.64589255e+00, -3.56826122e+00, -3.49062989e+00, -3.41299856e+00,
+        -3.33536722e+00, -3.25773589e+00, -3.18010456e+00, -3.10247323e+00,
+        -3.02484190e+00, -2.94721057e+00, -2.86957924e+00, -2.79194791e+00,
+        -2.71431658e+00, -2.63668525e+00, -2.55905392e+00, -2.48142259e+00,
+        -2.40379126e+00, -2.32615992e+00, -2.24852859e+00, -2.17089726e+00,
+        -2.09326593e+00, -2.01563460e+00, -1.93800327e+00, -1.86037194e+00,
+        -1.78274061e+00, -1.70510928e+00, -1.62747795e+00, -1.54984662e+00,
+        -1.47221529e+00, -1.39458396e+00, -1.31695262e+00, -1.23932129e+00,
+        -1.16168996e+00, -1.08405863e+00, -1.00642730e+00, -9.28795971e-01,
+        -8.51164640e-01, -7.73533309e-01, -6.95901978e-01, -6.18270648e-01,
+        -5.40639317e-01, -4.63007986e-01, -3.85376655e-01, -3.07745325e-01,
+        -2.30113994e-01, -1.52482663e-01, -7.48513322e-02,  2.77999856e-03,
+         8.04113293e-02,  1.58042660e-01,  2.35673991e-01,  3.13305322e-01,
+         3.90936652e-01,  4.68567983e-01,  5.46199314e-01,  6.23830645e-01,
+         7.01461976e-01,  7.79093306e-01,  8.56724637e-01,  9.34355968e-01,
+         1.01198730e+00,  1.08961863e+00,  1.16724996e+00,  1.24488129e+00,
+         1.32251262e+00,  1.40014395e+00,  1.47777528e+00,  1.55540661e+00,
+         1.63303794e+00,  1.71066928e+00,  1.78830061e+00,  1.86593194e+00,
+         1.94356327e+00,  2.02119460e+00,  2.09882593e+00,  2.17645726e+00,
+         2.25408859e+00,  2.33171992e+00,  2.40935125e+00,  2.48698258e+00,
+         2.56461391e+00,  2.64224524e+00,  2.71987658e+00,  2.79750791e+00,
+         2.87513924e+00,  2.95277057e+00,  3.03040190e+00,  3.10803323e+00,
+         3.18566456e+00,  3.26329589e+00,  3.34092722e+00,  3.41855855e+00,
+         3.49618988e+00,  3.57382121e+00,  3.65145255e+00,  3.72908388e+00,
+         3.80671521e+00]))
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that histogram actually output two different arrays, so we want to save both</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">hist_data</span><span class="p">,</span><span class="n">hist_bins</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This data isn’t quite what we want, as the bins are labeled by the edges of each range, but we want to plot it in the middle.  This we can see by comparing the lengths</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hist_bins</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">hist_data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1001 1000
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is solved by making an array of the middle points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bin_cent</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hist_data</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">hist_data</span><span class="p">)):</span>
+    <span class="n">bin_cent</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">hist_bins</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">hist_bins</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can make similar looking figures, either with our old “plot” or using a bar plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span><span class="p">,</span><span class="n">ax2</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_cent</span><span class="p">,</span><span class="n">hist_data</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_cent</span><span class="p">,</span><span class="n">hist_data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 1000 artists&gt;
+</pre></div>
+</div>
+<img alt="_images/Topic3 Matplotlib_46_1.png" src="_images/Topic3 Matplotlib_46_1.png" />
+</div>
+</div>
+<p>We can see by eye that something is wrong with our bar plot.  It clearly didn’t just plot the data.  The problem is just that the default size of the bars on a bar plot are too wide (and similarly for the default linewidth on plot).  We can just make the bars more narrow and it will look right again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span><span class="p">,</span><span class="n">ax2</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_cent</span><span class="p">,</span><span class="n">hist_data</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">bin_cent</span><span class="p">,</span><span class="n">hist_data</span><span class="p">,</span><span class="n">width</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_48_0.png" src="_images/Topic3 Matplotlib_48_0.png" />
+</div>
+</div>
+<p>Sometimes you will also want to plot points and not lines, in which case “scatter” is a big better than “plot”</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig2</span><span class="p">,</span><span class="n">ax2</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">colors</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">size</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_50_0.png" src="_images/Topic3 Matplotlib_50_0.png" />
+</div>
+</div>
+<p>In the last version, we see the first example of a “cmap”: this is a conversion from a set of numbers to a set of colors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### This is a copy of a function I found at https://matplotlib.org/stable/tutorials/colors/colormaps.html</span>
+
+<span class="n">cmaps</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">356</span><span class="p">)</span>
+<span class="n">gradient</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">gradient</span><span class="p">,</span> <span class="n">gradient</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">plot_color_gradients</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">cmap_list</span><span class="p">):</span>
+    <span class="c1"># Create figure and adjust figure height to number of colormaps</span>
+    <span class="n">nrows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cmap_list</span><span class="p">)</span>
+    <span class="n">figh</span> <span class="o">=</span> <span class="mf">0.35</span> <span class="o">+</span> <span class="mf">0.15</span> <span class="o">+</span> <span class="p">(</span><span class="n">nrows</span> <span class="o">+</span> <span class="p">(</span><span class="n">nrows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.22</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="n">nrows</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">6.4</span><span class="p">,</span> <span class="n">figh</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="mi">1</span> <span class="o">-</span> <span class="mf">0.35</span> <span class="o">/</span> <span class="n">figh</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.15</span> <span class="o">/</span> <span class="n">figh</span><span class="p">,</span>
+                        <span class="n">left</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.99</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s1"> colormaps&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axs</span><span class="p">,</span> <span class="n">cmap_list</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">gradient</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="o">-</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+
+    <span class="c1"># Turn off *all* ticks &amp; spines, not just the ones with colormaps.</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_axis_off</span><span class="p">()</span>
+
+    <span class="c1"># Save colormap list for later.</span>
+    <span class="n">cmaps</span><span class="p">[</span><span class="n">category</span><span class="p">]</span> <span class="o">=</span> <span class="n">cmap_list</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_color_gradients</span><span class="p">(</span><span class="s1">&#39;Diverging&#39;</span><span class="p">,</span>
+                     <span class="p">[</span><span class="s1">&#39;PiYG&#39;</span><span class="p">,</span> <span class="s1">&#39;PRGn&#39;</span><span class="p">,</span> <span class="s1">&#39;BrBG&#39;</span><span class="p">,</span> <span class="s1">&#39;PuOr&#39;</span><span class="p">,</span> <span class="s1">&#39;RdGy&#39;</span><span class="p">,</span> <span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="s1">&#39;RdYlBu&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;RdYlGn&#39;</span><span class="p">,</span> <span class="s1">&#39;Spectral&#39;</span><span class="p">,</span> <span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="s1">&#39;bwr&#39;</span><span class="p">,</span> <span class="s1">&#39;seismic&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_53_0.png" src="_images/Topic3 Matplotlib_53_0.png" />
+</div>
+</div>
+<p>These are just some of the examples.  There are plenty of color maps to choose from.</p>
+<p>Perhaps the more common use of the cmpa is in making heatmap plots.  This is a common visualization of 3 dimensional data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">Z</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="o">*</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mf">0.1</span><span class="o">*</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_min</span><span class="p">,</span> <span class="n">z_max</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">fig2</span><span class="p">,</span><span class="n">ax2</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="n">z_min</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">z_max</span><span class="p">,</span><span class="n">shading</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_57_0.png" src="_images/Topic3 Matplotlib_57_0.png" />
+</div>
+</div>
+<p>pcolor complained a lot more qhen I made the plot. Online tutorials often seem to show needed to include the color range and shading manualled.  The contour plots seems to work with less input, but do not include the same level of detail.</p>
+</section>
+<section id="d-figures">
+<h2>3d figures<a class="headerlink" href="#d-figures" title="Permalink to this headline">#</a></h2>
+<p>We can make heat maps for 3d data, but we might also want to visualize it in 3d</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">contour3D</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;binary&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;z&#39;)
+</pre></div>
+</div>
+<img alt="_images/Topic3 Matplotlib_61_1.png" src="_images/Topic3 Matplotlib_61_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;mpl_toolkits.mplot3d.art3d.Poly3DCollection at 0x122b37d60&gt;
+</pre></div>
+</div>
+<img alt="_images/Topic3 Matplotlib_62_1.png" src="_images/Topic3 Matplotlib_62_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zline</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">xline</span><span class="o">=</span><span class="n">zline</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">zline</span><span class="p">)</span>
+<span class="n">yline</span><span class="o">=</span><span class="n">zline</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">zline</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot3D</span><span class="p">(</span><span class="n">xline</span><span class="p">,</span><span class="n">yline</span><span class="p">,</span><span class="n">zline</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;mpl_toolkits.mplot3d.art3d.Line3D at 0x122b75f40&gt;]
+</pre></div>
+</div>
+<img alt="_images/Topic3 Matplotlib_64_1.png" src="_images/Topic3 Matplotlib_64_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ydata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">zdata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter3D</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span><span class="n">ydata</span><span class="p">,</span><span class="n">zdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;mpl_toolkits.mplot3d.art3d.Path3DCollection at 0x122fec130&gt;
+</pre></div>
+</div>
+<img alt="_images/Topic3 Matplotlib_65_1.png" src="_images/Topic3 Matplotlib_65_1.png" />
+</div>
+</div>
+<p>For 3d figures, one things that is often needed is to rotate the point of view.  This can be achieved using ax.view_init(theta,phi) where theta is the angle above the x-y plane and phi is the rotation around the z-axis:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_67_0.png" src="_images/Topic3 Matplotlib_67_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_68_0.png" src="_images/Topic3 Matplotlib_68_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic3 Matplotlib_69_0.png" src="_images/Topic3 Matplotlib_69_0.png" />
+</div>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>Python has nearly infinite flexibility to make figures of all kinds.  The basics are fairly easy to use.  Making sharp visual representations of information is an invaluable skill and learning the advanced python plotting techniques will enhance your ability to convey ideas. The best way is to look at examples that you like that have source code and then try to understand what they did by also reading the API.  Over time this will make it easier for you to just read the API directly to find new features you might want to try.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

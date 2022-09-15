@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Topic 0: Introduction &#8212; Physics 39 Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Topic 1a: Basics of Python" href="Topic1a_Data.html" />
+    <link rel="prev" title="Physics 39: Scientific Computing with Python" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Physics 39 Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Physics 39: Scientific Computing with Python
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Topic 0: Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1a_Data.html">
+   Topic 1a: Basics of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1b_Functions.html">
+   Topic 1b: Functions and Basic Operations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic2a_numpy.html">
+   Topic 2a:  numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic2b_random.html">
+   Topic 2b: Mathematical Operations in Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic3_Matplotlib.html">
+   Topic3: Plotting and Data Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic4b_Integration.html">
+   Topic 4b: Integration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic4c_ODEs.html">
+   Topic 4c: Solving Ordinary Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic5_data_analysis.html">
+   Topic 5: Intro to Data Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic6a_Bayes.html">
+   Topic 6a: Bayes’ Theorem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic6b_ML.html">
+   Topic 6b: Intro to Machine Learning
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic6c_MC.html">
+   Topic 6c: Monte Carlo Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic6d_Sympy.html">
+   Topic 6d: Symbolic Computing
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Topic0_Intro.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTopic0_Intro.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Topic0_Intro.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-this-course-about">
+   What is this course about?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-my-goals-for-you">
+   What are my goals for you?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-python">
+   Why Python?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-are-some-reasons-we-are-using-python">
+     Here are some reasons we are using python:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-wrong-with-python">
+       What is wrong with python?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Topic 0: Introduction</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-this-course-about">
+   What is this course about?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-are-my-goals-for-you">
+   What are my goals for you?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-python">
+   Why Python?
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#here-are-some-reasons-we-are-using-python">
+     Here are some reasons we are using python:
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-is-wrong-with-python">
+       What is wrong with python?
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-0-introduction">
+<h1>Topic 0: Introduction<a class="headerlink" href="#topic-0-introduction" title="Permalink to this headline">#</a></h1>
+<section id="what-is-this-course-about">
+<h2>What is this course about?<a class="headerlink" href="#what-is-this-course-about" title="Permalink to this headline">#</a></h2>
+<p>Computer programing / coding is a part of life for almost everyone working a STEM or STEM-adjacent field.  Of course, this is true in science for calculating things, analyzing and visualizing data (things you will likely need for future courses).  But this is increasingly true in non-academic jobs of all kinds.  The world is overflowing with data to the point that just collecting information and organizing it is a task for a computer.  Familiarity with the basic tools and language around programming will get you a long way.</p>
+<p>In many ways, the role of computers in STEM is similiar to the importance of reading and writing more generally.  You don’t have to be a professional author for it be useful to be able to write a clear and succinct email (for example).  A great writer may also be able to craft an beautiful essay that if beyond your capability, but you can still understand what it means and write a something that means the same thing, even if it doesn’t have the same elegance.  We find ourselves in the exact same situation when it comes to writing code: an expert will be able to manipulate the (programing) language in ways that you can’t envision, but that doesn’t mean that you can’t understand what they are doing or write a piece of code that does what you need.</p>
+<p>I am not here to tell you about strict rules about programming a computer anymore than I am to lecture you about the correct grammatical style for writing a news story for the New York Times. Our goal is much more modest to get you started: how do we understand what the computer is doing and how do we talk to it?  We will only scratch the surface of what you can do with python (not to mention all the other programming languages), but the hope if that with this introduction, you will be able to learn more about what else is out there, and apply it, on your own.</p>
+<p>Computers are incredibly powerful tools, but only if we can get it to do what we want.  Just like sending a clear set of instructions in writing to someone else (e.g. like a recipe), we have to make sure we write in a way that doesn’t confuse our target. The reality of computer programming is that anything you will do will be built on enormous amounts of code written by someone else.  As a result, the first step to doing anything usually requires that we understand how someone else built the language / function / package so that we can use it ourselves.  Unfortunately, people can make fairly illogical decisions and so there is sometimes no rhyme or reason to why the syntax of a particular language is written in a particularly way.</p>
+<p>Fortunately, unlike people, computers are perfectly logical.  While the person who wrote a particular piece of code might have done something for no particularly good reason, what the computer is doing underneath is often more rigid.  If the computer is trying to solve an equation, regardless of the syntax of the code, the computer is probably implementing one of a handful of basic algorithms.  Even though we might not know exactly what the computer is doing in detail, we can learn a lot about what our code is doing just by understanding a bit about the basics of how a computer operates.</p>
+</section>
+<section id="what-are-my-goals-for-you">
+<h2>What are my goals for you?<a class="headerlink" href="#what-are-my-goals-for-you" title="Permalink to this headline">#</a></h2>
+<p>I am not a computational physicist or someone that writes professional quality code for a living.  I am not going to force any style of coding upon you as if you were about to start a job as a professional software developer.  My code, like yours, will be filled will all kinds of mistakes that a professional would not tolerate.  Our goal is just to write code that works for now.  We are going to learn to code by doing.  Once you have a feel for it, you can go back and improve your technique.  This strategy is similar to learning to write stories in parallel with learning grammar/spelling.</p>
+<p>A bit of programing knowledge will open a lot of doors for you.  The key skill we are trying to develop as physicist is how to think and process information.  However, at this stage of your career, many of your best opportunities will come from combining your own thinking skills with some basic computer skills.  My goal is to teach you enough about the tools available to your (with python) that you can figure out the rest when you need it.</p>
+<p>(think of this like chess: you far from being grand masters right now, but if you know how to run any good computer chess program, you can still compete against the very best human players)</p>
+<p>E.g. you have probably spent a lot of time learning how to solve integrals by hand.  However, a computer can do a lot of that work for you:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">init_printing</span><span class="p">()</span>
+<span class="n">x</span><span class="o">=</span><span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">sympy</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic0_Intro_13_0.png" src="_images/Topic0_Intro_13_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic0_Intro_14_0.png" src="_images/Topic0_Intro_14_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sympy</span><span class="o">.</span><span class="n">integrate</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">sympy</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">),(</span><span class="n">x</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">evalf</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic0_Intro_15_0.png" src="_images/Topic0_Intro_15_0.png" />
+</div>
+</div>
+<p>We can also evaluate the integrals numerically:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">y</span><span class="p">:</span><span class="n">y</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic0_Intro_18_0.png" src="_images/Topic0_Intro_18_0.png" />
+</div>
+</div>
+<p>Of course, knowing how to integrate is still very important; it is pretty hard to debug a computer if you don’t understand what it is trying to do.  Instead, the value of the computer is that it can dramatically enhance and/or speed you ability to solve problems by giving the computer the more difficult or time consuming tasks.</p>
+<p>With that in mind there are specific things I want for you from this course:</p>
+<p>(1) you will all be able to make a piece of python code do some basic things for you: read/sort/analyze data, calculate things you care about (integrals, solve algebraic or differential equations), make figures, etc.</p>
+<p>(2) you will be sufficiently comfortable with python that when a piece of code is not working, you can debug the problem and get it to do what you want.  Debugging problems is really the key step that you will need to succeed in the world.  No one ever writes code that works the first time, so identifying and fixing your own mistakes is essential to succeeding on your own.  Every mistake is unique, so it isn’t about memorizing a list of possible errors and checking them, but it is building the confidence that you can figure out the problem yourself.</p>
+</section>
+<section id="why-python">
+<h2>Why Python?<a class="headerlink" href="#why-python" title="Permalink to this headline">#</a></h2>
+<section id="here-are-some-reasons-we-are-using-python">
+<h3>Here are some reasons we are using python:<a class="headerlink" href="#here-are-some-reasons-we-are-using-python" title="Permalink to this headline">#</a></h3>
+<p>(1) it is easy to read and write (2) it’s free / open source (3) it is used by LOTS of people in both industry and academia and (4) it is versatile.</p>
+<p>Confession: I learned C++ when I was in your position.  It was enourmously helpful in getting research experience as an undergrad.  Yet, I really didn’t like dealing with C++ and I promptly forgot how to use it the second my career didn’t require it.  I avoided using computers in my research for about 10 years starting in grad school. Why?  Because C++ is confusing to read, confusing to use and it was a lot of work to write a working piece of code even for a very small problem.  There was really no point to using C++ unless your life depended on it.</p>
+<p>What brought me back was Python.  The way the code works is pretty simple and easy to get started.  It makes it easy to find your mistakes and also worth your time to write something in python even if it is just a little calculation, figure, etc.  The jupyter notebook enviroment makes this even easier because you can just run the little bits of code you need without all the formal parts that go into a proper python script.</p>
+<p>Here is an example.  Let’s say I just want to add up some numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">+</span><span class="mi">10</span><span class="o">+</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic0_Intro_26_0.png" src="_images/Topic0_Intro_26_0.png" />
+</div>
+</div>
+<p>Let’s say I want to do a really big sum: <span class="math notranslate nohighlight">\(\sum_{n=1}^{1000} 1/n^2\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sum</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="nb">sum</span><span class="o">+=</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.6439345666815615
+</pre></div>
+</div>
+</div>
+</div>
+<p>This was really easy (a few seconds of typing).  In the old days, you would have to do a lot of work to do something like this in C++.</p>
+<section id="what-is-wrong-with-python">
+<h4>What is wrong with python?<a class="headerlink" href="#what-is-wrong-with-python" title="Permalink to this headline">#</a></h4>
+<p>It is slow.  If you need to do a very hard and time consuming calculating, python will probably be too slow.  Relatedly, if you are using some big code someone else developed to solve a hard problem, it probably isn’t written in python.</p>
+<p>This weakness of python is really a very tiny problem: the most time consuming part of solving most problems is writing and testing the code.  Python makes this part (the human part) way easier.  If you reach the point that your ability to solve interesting problems is limited by python itself and not your coding and debugging skills, then I am also confident that you will have no problem learning the tools you need to speed it up using another language (there are also tools to run pieces of code written in other languages inside python so that only the part of your code that needs to be blazing fast is written in something other than python).</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Physics 39: Scientific Computing with Python</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="Topic1a_Data.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Topic 1a: Basics of Python</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
