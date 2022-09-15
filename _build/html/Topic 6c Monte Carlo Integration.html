@@ -1,0 +1,1022 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Monte Carlo Methods: Integration &#8212; Physics 39 Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Physics 39 Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic0_Intro.html">
+   COGS 18: Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1a_Data.html">
+   Topic 1: Basics of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1b_Functions.html">
+   Topic 1b: Functions and Basic Operations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Topic 6c Monte Carlo Integration.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTopic 6c Monte Carlo Integration.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Topic 6c Monte Carlo Integration.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Monte Carlo Methods: Integration
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importance-sampling">
+   Importance Sampling
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-to-a-generic-integral">
+     Application to a Generic Integral
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Monte Carlo Methods: Integration</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Monte Carlo Methods: Integration
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importance-sampling">
+   Importance Sampling
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#application-to-a-generic-integral">
+     Application to a Generic Integral
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">rgamma</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="monte-carlo-methods-integration">
+<h1>Monte Carlo Methods: Integration<a class="headerlink" href="#monte-carlo-methods-integration" title="Permalink to this headline">#</a></h1>
+<p>The problem of dealing with high dimensional spaces is common to all kinds of situations, from machine learning to basic integration. We haven’t encountered this problem directly so far because we have been using small numbers of parameters.  In discussing Bayesian inference, we were mostly talking about 1 ro 2 parameters at a time. But we saw in the case of solve differential equations with machine learning how quickly the number of parameters would grow. Our intuition for how do deal with such high dimensional spaces is generally quite bad.</p>
+<p>Recall that one task we might want to perform on in this parameter space is integration.  Concretely, I need to integrate over some parameters to marginalize over their uncertainty.  While easy to state, numerically integrating in high dimensional spaces is very difficult and is a window in the broader challenges one can encounter.</p>
+<p>To see the problem, let’s remember that the volume of a d-dimensional ball of radius 1 is
+$<span class="math notranslate nohighlight">\( V_d = \frac{\pi^{d/2}}{ \Gamma[\frac{d}{2}+1]}\)</span><span class="math notranslate nohighlight">\(
+However, if we stick this sphere inside a d-dimensional box where the sphere touches the edges, so that each length of the box is the diameter, 2, then the volume of the enclosing box is \)</span>2^d$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dlist</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dlist</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="p">(</span><span class="n">dlist</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="n">gamma</span><span class="p">(</span><span class="n">dlist</span><span class="o">/</span><span class="mf">2.</span><span class="o">+</span><span class="mf">1.</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dlist</span><span class="p">,</span><span class="mf">2.</span><span class="o">**</span><span class="p">(</span><span class="n">dlist</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 6c Monte Carlo Integration_4_0.png" src="_images/Topic 6c Monte Carlo Integration_4_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">V_ratio</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">gamma</span><span class="p">(</span><span class="n">d</span><span class="o">/</span><span class="mf">2.</span><span class="o">+</span><span class="mf">1.</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">V_ratio</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">V_ratio</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">V_ratio</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span><span class="n">V_ratio</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5235987755982989 0.00249039457019272 2.461136950494199e-08 1.8681820538375912e-70
+</pre></div>
+</div>
+</div>
+</div>
+<p>In short, by the time you reach 100 dimensional space, the fraction of the volume taken up by our sphere is 10**(-70) of th total volume.</p>
+<p>So now imagine I have a function that falls off like an exponential of the distance from the origin.  The support of this function is going to be limited to a tiny fraction of the volume.  So if I am trying to integrate this function, if I put it inside a d-dimensional grid and integrate as usual, I am going to spend all my time adding up exponentially small terms and I will miss the region where the integrand gets it support.</p>
+<p>To see this, let’s imagein trying to determine the volume of the 4-sphere using nquad integration</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">S2</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">):</span>
+    <span class="n">out</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x1</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;=</span><span class="mf">1.</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">=</span><span class="mf">1.</span>
+    <span class="k">return</span> <span class="n">out</span>
+<span class="k">def</span> <span class="nf">S3</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">x2</span><span class="p">,</span><span class="n">x3</span><span class="p">):</span>
+    <span class="n">out</span><span class="o">=</span><span class="mi">0</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">x1</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x2</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">x3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">&lt;=</span><span class="mf">1.</span><span class="p">:</span>
+        <span class="n">out</span><span class="o">=</span><span class="mf">1.</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">nquad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">,[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5, 5.551115123125783e-15)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">nquad</span><span class="p">(</span><span class="n">S2</span><span class="p">,[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/opt/anaconda3/lib/python3.9/site-packages/scipy/integrate/quadpack.py:879: IntegrationWarning: The maximum number of subdivisions (50) has been achieved.
+  If increasing the limit yields no improvement it is advised to analyze 
+  the integrand in order to determine the difficulties.  If the position of a 
+  local difficulty can be determined (singularity, discontinuity) one will 
+  probably gain from splitting up the interval and calling the integrator 
+  on the subranges.  Perhaps a special-purpose integrator should be used.
+  quad_r = quad(f, low, high, args=args, full_output=self.full_output,
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.1421278363209537, 0.0002045333175209052)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">dblquad</span><span class="p">(</span><span class="n">S2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(3.1421278363209537, 0.0002045333175209052)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is already quite slow.  This is in part because of how we defined the function, so instead lets try using a built in numpy function that might work faster.  So let’s look some simple integrals as a function of dimension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">integrate</span><span class="o">.</span><span class="n">nquad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">),[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.977294701166025, 5.5259071775793096e-14)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">integrate</span><span class="o">.</span><span class="n">nquad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="p">),[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">t3</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.01563286781311035
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">integrate</span><span class="o">.</span><span class="n">nquad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">a</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="p">),[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">t4</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.331820011138916
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">integrate</span><span class="o">.</span><span class="n">nquad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">z</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">),[[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">t5</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.462835788726807
+</pre></div>
+</div>
+</div>
+</div>
+<p>It is costing us 20 times the speed whenever we increase dimension by one.  So the running time is <span class="math notranslate nohighlight">\({\cal O}(20^d)\)</span>.  Clearly we will have no hope if we want to work in some high dimensional space.</p>
+<p><strong>Why might it be good to use random numbers to integrate?</strong> Random numbers are better than evenly space sampling because we don’t actually know where our signal lives. When you are looking for a signal in a unknown space, doing something in a very correlated way is not a good search strategy.  Random means that there is at least some chance you will hit on the right answer.  In contrast, trying a regular grid may make your probability zero because your signal lives between the grid points.</p>
+<p>Let’s start by implement the most basic possible version of monte-carlo integration just to find the volume of the <span class="math notranslate nohighlight">\(d\)</span>-sphere. Here we are simple going to sample <span class="math notranslate nohighlight">\(d\)</span> numbers between -1 and 1 and calculate the fraction inside the <span class="math notranslate nohighlight">\(d\)</span>-sphere.  Finally, the area is <span class="math notranslate nohighlight">\(2^d\)</span> (the volume of the box) tims this fraction.</p>
+<p>As we have already done this before to determine <span class="math notranslate nohighlight">\(\pi\)</span> (<span class="math notranslate nohighlight">\(d=2\)</span>), we are going to go straight to comparing with the actual answer.  We will output the answer after every 100 points so that we can check how quickly we are approaching the answer</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dvol</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">):</span>
+    <span class="n">analytic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">rgamma</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Narea</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="c1">#sample x_i from -1 to 1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mf">2.</span><span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mf">1.</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mf">1.</span>
+        <span class="c1">#only add the result if it is inside the cicle</span>
+        <span class="k">if</span> <span class="n">j</span><span class="o">%</span><span class="k">100</span> ==0 and j!=0:  # Now ouput the result every 100 steps
+            <span class="n">Narea</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="nb">float</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">-</span><span class="n">analytic</span><span class="p">))</span><span class="o">/</span><span class="n">analytic</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">Narea</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Narea</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="n">Narea</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">dvol</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="o">-</span><span class="n">t0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.06574273109436
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.096250057220459
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.476325988769531
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.742933034896851
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span><span class="o">=</span><span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Narea</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">,</span><span class="n">Narea</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;d=&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="o">++</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 6c Monte Carlo Integration_25_0.png" src="_images/Topic 6c Monte Carlo Integration_25_0.png" />
+</div>
+</div>
+<p>Here we are getting the same level of fractional error for approximately the same computing time as we increase dimension.</p>
+<p>However, we do note that the error is getting worse with dimension. This is not just random, at some point we are going to encounter our original problem: we are drawing numbers uniformly inside a <span class="math notranslate nohighlight">\(d\)</span>-dimensional box and keeping track of those that are inside the sphere.  However, but we say at <span class="math notranslate nohighlight">\(d=20\)</span>, the fraction of volume in the sphere is about <span class="math notranslate nohighlight">\(2.5\times10^{-8}\)</span> and therefore we wouldn’t expect to hit the sphere once in <span class="math notranslate nohighlight">\(10^6\)</span> tries.</p>
+</section>
+<section id="importance-sampling">
+<h1>Importance Sampling<a class="headerlink" href="#importance-sampling" title="Permalink to this headline">#</a></h1>
+<p>Of course, what we are really enountering is the idea random numbers can’t solve the volume problem if we are drawing from a uniform distribution.  Instead, we should be tailoring how to draw the random numbers to the problem we are trying to solve.</p>
+<p>We are going to try a very basic technique called importance sampling. This will give us some intuition but will miss out of some of the complexity of more powerful tools.</p>
+<p>However, the key idea that is common to all of them is that we have a probability distribution that allows us to increase the chance of finding the most important parts of parameter space.  In advanced techniques, this probabilty adjust to the function itself, allowing it to find the highest points more easily.  Here is will simply choose one and see how to tell when we’ve made a good choice.</p>
+<p>Importance sampling is the generalization of the above when we don’t pick a uniform distribution.  Suppose instead that a pick points from a  distribution <span class="math notranslate nohighlight">\(p(x)\)</span> and I want to compute <span class="math notranslate nohighlight">\(\int d^d x q(\vec x) p(\vec x) = \langle q(\vec x) \rangle\)</span>.  Now if we define <span class="math notranslate nohighlight">\(q(\vec x) = f(\vec x) / p(\vec x)\)</span> this is also equivalent to <span class="math notranslate nohighlight">\(\int d^d x f(\vec x) \equiv Q\)</span>.  Now we draw from the distribution <span class="math notranslate nohighlight">\(p(\vec x)\)</span> we get
+$<span class="math notranslate nohighlight">\(
+Q_N = V \frac{1}{N} \sum_{i =1}^{N} q(\vec x_i) 
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\vec x_i<span class="math notranslate nohighlight">\( are drawn from \)</span>p(\vec x)<span class="math notranslate nohighlight">\( then we again have \)</span>Q_N \to Q<span class="math notranslate nohighlight">\(.  As long as \)</span>p(\vec x)<span class="math notranslate nohighlight">\( and \)</span>q(\vec x)$ can be chosen to that they are large in the same areas, we might expect to find faster convergence to the correct answer.</p>
+<p>Let’s start by recalculating the volume of the sphere.  We are going to have <span class="math notranslate nohighlight">\(p(\vec x) = e^{-|\vec x|^2/(2 \sigma^2)}/\sqrt{2\pi \sigma^2}\)</span> and <span class="math notranslate nohighlight">\(f(\vec x)=1\)</span> where <span class="math notranslate nohighlight">\(x^2 \leq 1\)</span> and 0 otherwise and therefore <span class="math notranslate nohighlight">\(q(\vec x) = f(\vec x) / p(\vec x)\)</span> is <span class="math notranslate nohighlight">\(1/p(\vec x_i)\)</span> when <span class="math notranslate nohighlight">\(\vec x_i\)</span> is inside the sphere and 0 otherwise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We are going to pick from a gaussian distribution with some variance</span>
+<span class="k">def</span> <span class="nf">gaussvol</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="n">analytic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">rgamma</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Narea</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+        <span class="c1">#sample x_i from -1 to 1</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">()</span><span class="o">*</span><span class="n">sigma</span>     
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># Here we use importance sampling to weight the result</span>
+            <span class="n">count</span><span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="mf">2.</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+        <span class="c1">#only add the result if it is inside the cicle</span>
+        <span class="k">if</span> <span class="n">j</span><span class="o">%</span><span class="k">1000</span> ==0 and j!=0:
+            <span class="n">Narea</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">count</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="o">-</span><span class="n">analytic</span><span class="p">)</span><span class="o">/</span><span class="n">analytic</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">Narea</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npoints</span><span class="o">=</span><span class="mi">10000</span>
+<span class="n">dim</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">gaussvol</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">#sigma_list=[5,1,0.5,0.3,0.2,0.1]</span>
+<span class="c1">#Gvol={}</span>
+<span class="c1">#for s in sigma_list:</span>
+<span class="c1">#    Gvol[s]=gaussvol(npoints,dim,s)</span>
+<span class="c1">#vol6flat=dvol(npoints,dim)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.4319769372671298,
+ 0.3540356223416422,
+ 0.2697550084239388,
+ 0.2991916655235771,
+ 0.21461088830150482,
+ 0.21289689052797273,
+ 0.23368547694159758,
+ 0.17414066719222374,
+ 0.1598784485237275]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We are going to pick from a gaussian distribution with some variance</span>
+<span class="k">def</span> <span class="nf">gaussvol_fast</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="n">analytic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">rgamma</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Narea</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">X</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">Y</span><span class="o">=</span><span class="p">((</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">f</span><span class="o">=</span><span class="mi">1000</span>
+    <span class="n">factor</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">n</span><span class="o">/</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">out</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">factor</span><span class="p">):</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(((</span><span class="n">Y</span><span class="p">[:(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="p">[:(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="n">d</span><span class="o">/</span><span class="p">((</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">)</span><span class="o">-</span><span class="n">analytic</span><span class="p">)</span><span class="o">/</span><span class="n">analytic</span>
+    <span class="c1">#return ((Y&lt;=1)*np.exp(Y)).sum()/n</span>
+    <span class="k">return</span> <span class="n">out</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">npoints</span><span class="o">=</span><span class="mi">1000000</span>
+<span class="n">dim</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">sigma_list</span><span class="o">=</span><span class="p">[</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.4</span><span class="p">,</span><span class="mf">0.2</span><span class="p">]</span>
+<span class="n">Gvol</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sigma_list</span><span class="p">:</span>
+    <span class="n">Gvol</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="n">gaussvol_fast</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="n">vol6flat</span><span class="o">=</span><span class="n">dvol</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="n">dim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">vh</span><span class="o">/</span><span class="n">rcz751b57355h3qzj37sc3080000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_79812</span><span class="o">/</span><span class="mf">1372217354.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sigma_list</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">Gvol</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="n">gaussvol_fast</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">vol6flat</span><span class="o">=</span><span class="n">dvol</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="n">dim</span><span class="p">)</span>
+
+<span class="nn">/var/folders/vh/rcz751b57355h3qzj37sc3080000gp/T/ipykernel_79812/353479215.py</span> in <span class="ni">dvol</span><span class="nt">(n, d)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>             <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mf">2.</span><span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mf">1.</span>
+<span class="ne">---&gt; </span><span class="mi">10</span>         <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>             <span class="n">count</span> <span class="o">+=</span> <span class="mf">1.</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="c1">#only add the result if it is inside the cicle</span>
+
+<span class="nn">/opt/anaconda3/lib/python3.9/site-packages/numpy/core/_methods.py</span> in <span class="ni">_sum</span><span class="nt">(a, axis, dtype, out, keepdims, initial, where)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="k">def</span> <span class="nf">_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>          <span class="n">initial</span><span class="o">=</span><span class="n">_NoValue</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">47</span>     <span class="k">return</span> <span class="n">umr_sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="p">,</span> <span class="n">dtype</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">keepdims</span><span class="p">,</span> <span class="n">initial</span><span class="p">,</span> <span class="n">where</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> 
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="k">def</span> <span class="nf">_prod</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keepdims</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Num</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="n">npoints</span><span class="o">+</span><span class="mi">1000</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">n_old</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span><span class="n">npoints</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sigma_list</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Num</span><span class="p">,</span><span class="n">Gvol</span><span class="p">[</span><span class="n">s</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n_old</span><span class="p">,</span><span class="n">vol6flat</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="c1">#plt.xscale(&#39;log&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="n">npoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 6c Monte Carlo Integration_37_0.png" src="_images/Topic 6c Monte Carlo Integration_37_0.png" />
+</div>
+</div>
+<p>The first thing we notice is that for the same number of randomly drawn points, some of our Gaussian models are doing quite a bit better than our black line which used a uniform distribution.</p>
+<p>The second, and more important, thing to notice that the accuracy is not strictly decreasing or increasing.  The best choice was 0.4, both 0.2 and 0.6 had larger errors.  This is pretty easy to understand if we keep track of how often we are throwing away points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We are going to pick from a gaussian distribution with some variance</span>
+<span class="k">def</span> <span class="nf">gaussvol_frac</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="n">analytic</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">**</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">rgamma</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="o">/</span><span class="mf">2.</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">Narea</span><span class="o">=</span><span class="p">[]</span>
+    <span class="n">X</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">Y</span><span class="o">=</span><span class="p">((</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">out_Vol</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(((</span><span class="n">Y</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="n">d</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">-</span><span class="n">analytic</span><span class="p">)</span><span class="o">/</span><span class="n">analytic</span>
+    <span class="n">out_frac</span><span class="o">=</span><span class="p">(</span><span class="n">Y</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">n</span>
+    <span class="k">return</span> <span class="n">out_Vol</span><span class="p">,</span><span class="n">out_frac</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_r</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">error</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_r</span><span class="p">))</span>
+<span class="n">frac</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_r</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_r</span><span class="p">)):</span>
+    <span class="n">error</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">frac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">gaussvol_frac</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">s_r</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_r</span><span class="p">,</span><span class="n">error</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_r</span><span class="p">,</span><span class="n">frac</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;acceptance fraction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 6c Monte Carlo Integration_41_0.png" src="_images/Topic 6c Monte Carlo Integration_41_0.png" />
+</div>
+</div>
+<p>Here we see what’s going on: when <span class="math notranslate nohighlight">\(\sigma &lt; 0.1\)</span>, basically every point is inside the sphere.  The fraction of points that pass <span class="math notranslate nohighlight">\(\vec x^2\leq 1\)</span> is basically 100 percent, but that means out poitns are not really sampling the shape of the function <span class="math notranslate nohighlight">\(f(x)\)</span>.  When <span class="math notranslate nohighlight">\(\sigma &gt; 1\)</span> almost none of the points are passing the test and so our error also increases because we don’t have enough points.</p>
+<p>This is the basic moral of monte carlo methods: they can be much more effective than other techniques, but the parameters of the probability distribution have to encode some knowledge of the function.  There are lots of scheme that use the idea of throwing away random number that aren’t in some range, and what we learned here is that you are trying to find a sweet spot between never throwing away your trails and always throwing them away.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gaussvol_frac</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gaussvol_frac</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.25</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gaussvol_frac</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mf">0.15</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(7.483769599341911e-05, 0.052534)
+(0.0010311414444701885, 0.283449)
+(0.0026357558160213456, 0.304265)
+</pre></div>
+</div>
+</div>
+</div>
+<p>But look at what we can do with this: we are calculating integration in 50 dimensions in seconds so 1/1000 accuracy.  This would have been impossible the way we had started.</p>
+<section id="application-to-a-generic-integral">
+<h2>Application to a Generic Integral<a class="headerlink" href="#application-to-a-generic-integral" title="Permalink to this headline">#</a></h2>
+<p>Now we want to do more than just calculate the volume but think about calculating an actual integral.  Well, luckily enough for us, we have already done most of the work.  If we define a function that takes a shape <span class="math notranslate nohighlight">\((n,d)\)</span> array and returns a length n array, then we can easily add it to the function we already have.</p>
+<p>Remember <span class="math notranslate nohighlight">\(f(x)\)</span> was just implemented by the bool <span class="math notranslate nohighlight">\(Y&lt;=1\)</span>. To make this an integral over a number function, we just swapm that piece for our functionf</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gauss_int</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">sigma</span><span class="p">):</span>
+    <span class="n">X</span><span class="o">=</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d</span><span class="o">*</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">d</span><span class="p">)</span>
+    <span class="n">Y</span><span class="o">=</span><span class="p">((</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">out_int</span><span class="o">=</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="n">d</span><span class="o">/</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">out_frac</span><span class="o">=</span><span class="p">(</span><span class="n">Y</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">n</span>
+    <span class="k">return</span> <span class="n">out_int</span><span class="p">,</span><span class="n">out_frac</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As long as the function is define as describe, this will work. A simple example might be</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">radial_func</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">z</span><span class="o">=</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mf">0.2</span><span class="o">*</span><span class="n">z</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gauss_int</span><span class="p">(</span><span class="n">radial_func</span><span class="p">,</span><span class="mi">10000000</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16.366023429849886, 0.3230563)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see there is really no problem with the speed of this method.  Our real challenge becomes how we test the accuracy.  Since part of the challege is picking the parameters that best suite the integral, we can’t rely on knowing the exact answer (otherwise why are we doing the integral!). Some basic things we can do are check convergence and sensitivity to parameters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">gauss_int</span><span class="p">(</span><span class="n">radial_func</span><span class="p">,</span><span class="mi">100000</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gauss_int</span><span class="p">(</span><span class="n">radial_func</span><span class="p">,</span><span class="mi">1000000</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gauss_int</span><span class="p">(</span><span class="n">radial_func</span><span class="p">,</span><span class="mi">10000000</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mf">0.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(16.238085410897224, 0.32452)
+(16.170245937619843, 0.323394)
+(16.272515275174765, 0.3232996)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">int_val</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_r</span><span class="p">))</span>
+<span class="n">int_frac</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_r</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s_r</span><span class="p">)):</span>
+    <span class="n">int_val</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">int_frac</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">gauss_int</span><span class="p">(</span><span class="n">radial_func</span><span class="p">,</span><span class="mi">1000000</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="n">s_r</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_r</span><span class="p">,</span><span class="n">int_val</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;integral&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_r</span><span class="p">,</span><span class="n">int_frac</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;acceptance fraction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 6c Monte Carlo Integration_54_0.png" src="_images/Topic 6c Monte Carlo Integration_54_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_r</span><span class="p">,</span><span class="n">int_val</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;integral&#39;</span><span class="p">)</span>
+<span class="c1">#plt.plot(s_r,int_frac,lw=3,label=&#39;acceptance fraction&#39;)</span>
+<span class="c1">#plt.legend()</span>
+<span class="c1">#plt.yscale(&#39;log&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 6c Monte Carlo Integration_55_0.png" src="_images/Topic 6c Monte Carlo Integration_55_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
+<p>There are a wide range of numerical methods that use random numbers to speed up and/or improve the accuracy of the method.  This is particularly important for problems with nots of parameters where uniform sampling becomes extremely inefficient.  We studied the case of integration specifically, which shows many of the pros and cons of these methods in a context that is easy enough to understand.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

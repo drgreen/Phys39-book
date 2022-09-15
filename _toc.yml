@@ -1,0 +1,21 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+
+format: jb-book
+root: intro
+chapters:
+- file: Topic0_Intro
+- file: Topic1a_Data
+- file: Topic1b_Functions
+- file: Topic2a_numpy
+- file: Topic2b_random
+- file: Topic3_Matplotlib
+- file: Topic4b_Integration
+- file: Topic4c_ODEs
+- file: Topic5_data_analysis
+- file: Topic6a_Bayes
+- file: Topic6b_ML
+- file: Topic6c_MC
+- file: Topic6d_Sympy
+

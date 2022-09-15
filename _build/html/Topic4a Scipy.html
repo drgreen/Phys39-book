@@ -1,0 +1,1417 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Topic 4: Scipy and Numerical Techniques &#8212; Physics 39 Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Physics 39 Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic0_Intro.html">
+   COGS 18: Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1a_Data.html">
+   Topic 1: Basics of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1b_Functions.html">
+   Topic 1b: Functions and Basic Operations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Topic4a Scipy.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTopic4a Scipy.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Topic4a Scipy.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#newton-s-method">
+   Newton’s method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolation">
+   Interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operations-on-functions-interpolations">
+     Operations on functions / interpolations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-functions">
+   Special Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Topic 4: Scipy and Numerical Techniques</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#newton-s-method">
+   Newton’s method
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#interpolation">
+   Interpolation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#operations-on-functions-interpolations">
+     Operations on functions / interpolations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-functions">
+   Special Functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-4-scipy-and-numerical-techniques">
+<h1>Topic 4: Scipy and Numerical Techniques<a class="headerlink" href="#topic-4-scipy-and-numerical-techniques" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We are now ready to apply some of our basic know-how to basic numerical problems like finding solutions of equations, ODEs, and integrating.</p>
+<p>Before we get started with examples, we have to learn a useful trick involving lambda functions.  There is some deep origin of this idea in computer science, but our superficial level, they give us a way of defining a function while we are doing something else</p>
+<p>Here for example, is a function that adds x and y</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">+</span><span class="n">y</span>
+<span class="n">add</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can do the same wit a lambda function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.&lt;lambda&gt;(x, y)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>So for I have just created the fucntion without giving it a name.  I can act on it too by</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)(</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we can think of lambda x,y: as the same thing as add(x,y) but we never stopped to define it.  At this moment, it might seem stange that we would need such a thing.  However, when it comes to solving equations, the arguements of our numerical technique is a function! We integrate functions and minimize functions, for example, so if we have a code that does that, the input is a function, not a piece of data.  lambda lets us do this easily.</p>
+<section id="newton-s-method">
+<h2>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this headline">#</a></h2>
+<p>The best way to understand both how these libraries work and what they do is to try to solve a simple equation numerically. For example, let’s that the quadratic equation <span class="math notranslate nohighlight">\(x^2 +2x +1 =0\)</span>.  We know the solution, <span class="math notranslate nohighlight">\(x=-1\)</span> already, but those will be good checks our method</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">optimize</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999805834525
+</pre></div>
+</div>
+</div>
+</div>
+<p>Okay, so it finds the solution pretty well.  We can see we could have done the same directly with our lambda function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999805834525
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is why it is nice to have these lambda functions, because it saves us space so that we aren’t defining all kinds of boring functions.  We save our functions for things that are actually useful</p>
+<p>Combining back to our problem: what do we think of this answer?  This is a pretty simple equation and while we are close, this is not just some machine precision error, since there are many incorret digits.  What is going on and how can we do better?</p>
+<p>Let’s make our own Newton’s method code and figure out what’s going on.  First, this piece code took a function as an input.  So we must be able to define a function where the name of the function is the input:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_func</span><span class="p">(</span><span class="n">func</span><span class="p">):</span> <span class="c1">#func is the name of some function that take 2 inputs</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="c1">#return the function evaluated at (1,2)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_func</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>  <span class="c1"># Yay! It works</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>When a one function uses another function as its arguement, that is when we can use the lambda function instead.  It</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_func</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">100</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>201
+</pre></div>
+</div>
+</div>
+</div>
+<p>So we know how to feed a function to another function.  But what exactly are we trying to do? Newton’s method is supposed to take our function and approximate it as a line based on the point we start <span class="math notranslate nohighlight">\(x_0\)</span>,
+$<span class="math notranslate nohighlight">\(y = f'(x_0)(x-x_0) + f(x_0)\)</span><span class="math notranslate nohighlight">\(  
+It then finds the point where \)</span>y=0<span class="math notranslate nohighlight">\(, we'll call that \)</span>x_1<span class="math notranslate nohighlight">\(, whose solution is
+\)</span><span class="math notranslate nohighlight">\(x_1 = x_0 - f(x_0)/f'(x_0)\)</span><span class="math notranslate nohighlight">\(
+We can guess this is probably close to the solution than where we started, so let's use repeat with \)</span>x_1 \to x_0$</p>
+<p>Problem: if I want to make a code that does this, I need to tell it when to stop.  Otherwise it will just repeat forever.  I that two options: stop when my answer is close enough to zero or stop after some fixed number of steps (or what ever comes first)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">fprime</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">err</span><span class="p">):</span>
+    <span class="n">x1</span><span class="o">=</span><span class="n">x0</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">fprime</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span> <span class="c1"># new point according to newton</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span><span class="o">&gt;</span><span class="n">err</span><span class="p">:</span>  <span class="c1"># need the absolute value here</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">my_newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">fprime</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">err</span><span class="p">)</span> <span class="c1"># repeat if the error is too large</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x1</span> <span class="c1"># return x1 when we are happy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.0000001</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.25
+7.5625
+1.890625
+0.47265625
+0.1181640625
+0.029541015625
+0.00738525390625
+0.0018463134765625
+0.000461578369140625
+0.00011539459228515625
+2.8848648071289062e-05
+7.212162017822266e-06
+1.8030405044555664e-06
+4.507601261138916e-07
+1.126900315284729e-07
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9998321533203125
+</pre></div>
+</div>
+</div>
+</div>
+<p>Wow!  That’s pretty cool.  So what did we learn? This method needs two things that we didn’t feed the scipy function: (a) the derivative of f and (b) a measure of when to stop.  Presumably those are options inside the function that we didn’t use?</p>
+<p>Scipy isn’t going to calculate derivatives for us, so it must be approximating the derivative some other way.  Indeed that is what’s happening: if you don’t provide it with the derivative, it uses something called the secant method.  To use the true Newton’s method, you need to give it the derivative as well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton1</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">fprime</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">newton1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999893281472
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sectan1</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sectan1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.999999984901414
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">abs</span><span class="p">(</span><span class="n">newton1</span><span class="o">-</span><span class="n">sectan1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.426733202222977e-09
+</pre></div>
+</div>
+</div>
+</div>
+<p>First,let’s make a guess that the error is set at <span class="math notranslate nohighlight">\(10^{-16}\)</span> because we are using 16 bit numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myresult</span><span class="o">=</span><span class="n">my_newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myresult</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.25
+7.5625
+1.890625
+0.47265625
+0.1181640625
+0.029541015625
+0.00738525390625
+0.0018463134765625
+0.000461578369140625
+0.00011539459228515625
+2.8848648071289062e-05
+7.212162017822266e-06
+1.8030405044555664e-06
+4.507601261138916e-07
+1.126900315284729e-07
+2.8172507882118225e-08
+7.043126970529556e-09
+1.760781742632389e-09
+4.4019543565809727e-10
+1.1004885891452432e-10
+2.751221472863108e-11
+6.87805368215777e-12
+1.7195134205394424e-12
+4.298783551348606e-13
+1.0746958878371515e-13
+2.6867397195928788e-14
+6.661338147750939e-15
+1.6653345369377348e-15
+4.440892098500626e-16
+1.1102230246251565e-16
+-0.9999999945297885
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton1</span><span class="o">-</span><span class="n">myresult</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.201641339880325e-09
+</pre></div>
+</div>
+</div>
+</div>
+<p>This seems like a good guess, but when we look at the documention, it seems more like what they did was stop when the difference between x1 and x0 gets small.  It takes an optional input called “tol” whose default is 1.48e-08.  Let’s see what happens if we do that instead:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_newton2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">fprime</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">err</span><span class="p">):</span>
+    <span class="n">x1</span><span class="o">=</span><span class="n">x0</span><span class="o">-</span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">fprime</span><span class="p">(</span><span class="n">x0</span><span class="p">))</span> <span class="c1"># new point according to newton</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">x1</span><span class="o">-</span><span class="n">x0</span><span class="p">)</span><span class="o">&gt;</span><span class="n">err</span><span class="p">:</span>  <span class="c1"># need the absolute value here</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">my_newton2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">fprime</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">err</span><span class="p">)</span> <span class="c1"># repeat if the error is too large</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myresult2</span><span class="o">=</span><span class="n">my_newton2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">1.48e-08</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myresult2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.25
+7.5625
+1.890625
+0.47265625
+0.1181640625
+0.029541015625
+0.00738525390625
+0.0018463134765625
+0.000461578369140625
+0.00011539459228515625
+2.8848648071289062e-05
+7.212162017822266e-06
+1.8030405044555664e-06
+4.507601261138916e-07
+1.126900315284729e-07
+2.8172507882118225e-08
+7.043126970529556e-09
+1.760781742632389e-09
+4.4019543565809727e-10
+1.1004885891452432e-10
+2.751221472863108e-11
+6.87805368215777e-12
+1.7195134205394424e-12
+4.298783551348606e-13
+1.0746958878371515e-13
+2.6867397195928788e-14
+6.661338147750939e-15
+1.6653345369377348e-15
+4.440892098500626e-16
+-0.9999999893281472
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999893281472
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton1</span><span class="o">-</span><span class="n">myresult2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We hit exactly the same number as Scipy! We can even get back to our old answer in scipy by replacing</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton2</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">fprime</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">tol</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newton2</span><span class="o">-</span><span class="n">myresult</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now the one thing that is nice about scipy is that it has more methods built in. We have a pretty good idea of what scipy is doing, although it is definitely coded up in a better way that is probably faster and can handle situations where we don’t actually converge (e.g. scipy has a max number of iterations so it doesn’t get stuck in an infinite loop).  Yet, based on what we have seen, we can imagine that if we gave it more information about the function, it could probably do better.  For example, we could improve Newton’s method to use the second derivative too!  Scipy has this built in for us</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fprime2</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="n">fprime</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="n">fprime2</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mf">2.</span><span class="p">,</span><span class="n">tol</span><span class="o">=</span><span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fprime2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999957639969
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fprime2</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">newton1</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.236003103841313e-09
+1.0671852845867136e-08
+</pre></div>
+</div>
+</div>
+</div>
+<p>For all our effort, it seems like we have hit a wall.  We can’t do much better than what we have.  What’s the problem?  Right now we have hit the point where the difference between x1 and x0 is 10^(-16) which is around the machine error for generic floating point numbers.  Presumably if we want to do better, we are going to have to make the working precision higher.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_newton2</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">1.48e-64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.25
+7.5625
+1.890625
+0.47265625
+0.1181640625
+0.029541015625
+0.00738525390625
+0.0018463134765625
+0.000461578369140625
+0.00011539459228515625
+2.8848648071289062e-05
+7.212162017822266e-06
+1.8030405044555664e-06
+4.507601261138916e-07
+1.126900315284729e-07
+2.8172507882118225e-08
+7.043126970529556e-09
+1.760781742632389e-09
+4.4019543565809727e-10
+1.1004885891452432e-10
+2.751221472863108e-11
+6.87805368215777e-12
+1.7195134205394424e-12
+4.298783551348606e-13
+1.0746958878371515e-13
+2.6867397195928788e-14
+6.661338147750939e-15
+1.6653345369377348e-15
+4.440892098500626e-16
+1.1102230246251565e-16
+0.0
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.9999999945297885
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try increasing the working precision of our code using high precision numbers</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Decimal</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal(&#39;0.1000000000000000055511151231257827021181583404541015625&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_newton3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">fprime</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">err</span><span class="p">):</span>
+    <span class="n">xs</span><span class="o">=</span><span class="n">Decimal</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">x1</span><span class="o">=</span><span class="n">xs</span><span class="o">-</span><span class="n">Decimal</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span><span class="o">/</span><span class="n">Decimal</span><span class="p">(</span><span class="n">fprime</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span> <span class="c1"># new point according to newton</span>
+    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)))</span><span class="o">&gt;</span><span class="n">Decimal</span><span class="p">(</span><span class="n">err</span><span class="p">):</span>  <span class="c1"># need the absolute value here</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Decimal</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="n">my_newton3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">fprime</span><span class="p">,</span><span class="n">x1</span><span class="p">,</span><span class="n">err</span><span class="p">)</span> <span class="c1"># repeat if the error is too large</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">x1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_newton3</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mf">1.48e-64</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30.25
+7.5625
+1.890625
+0.47265625
+0.1181640625
+0.029541015625
+0.00738525390625
+0.0018463134765625
+0.000461578369140625
+0.00011539459228515625
+0.0000288486480712890625
+0.000007212162017822265625
+0.00000180304050445556640625
+4.507601261138916015625E-7
+1.126900315284729003906E-7
+2.81725078821182250973E-8
+7.0431269705295562748E-9
+1.7607817426323890684E-9
+4.401954356580972670E-10
+1.100488589145243165E-10
+2.75122147286310790E-11
+6.8780536821577699E-12
+1.7195134205394430E-12
+4.298783551348607E-13
+1.074695887837150E-13
+2.68673971959283E-14
+6.7168492989822E-15
+1.6792123247455E-15
+4.198030811861E-16
+1.049507702966E-16
+2.62376925747E-17
+6.5594231434E-18
+1.6398557855E-18
+4.099639466E-19
+1.024909865E-19
+2.56227470E-20
+6.4056866E-21
+1.6014220E-21
+4.003550E-22
+1.000887E-22
+2.50223E-23
+6.2560E-24
+1.5641E-24
+3.905E-25
+9.78E-26
+2.46E-26
+5.6E-27
+1.5E-27
+6E-28
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal(&#39;-0.9999999999999890669998056123&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Decimal</span><span class="p">(</span><span class="n">newton1</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal(&#39;1.067185284586713578391936607658863067626953125E-8&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Decimal</span><span class="p">(</span><span class="s1">&#39;-0.9999999999999890669998056123&#39;</span><span class="p">)</span><span class="o">-</span><span class="n">Decimal</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Decimal(&#39;1.09330001943877E-14&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>So what are the morals of this exercise:</p>
+<p>(1) you may not know exactly how things are coded inside numpy or scipy, you should be able to get a pretty good idea how they work</p>
+<p>(2) numerical techniques always have some error associated with them.  You can learn a lot about a code by understanding what controls the size of the error and trying to make it smaller</p>
+<p>(3) there are lots more options built into a scipy solver than you would want to code yourself.  But, the simplest implementations are often pretty close to what you do know how to code up yourself.  The complicated options are usually just the simple idea extended to higher order (more derivatives, more grid points, higher order polynomial extrolations, etc)</p>
+</section>
+<section id="interpolation">
+<h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes you don’t actually have the analytic form of a function you want to use. Instead you might have some raw data.  Alternatively, you have the function but calculating it is so slow you need to pre-compute it at a bunch of points before you can use it in some other applications (like integrating, equation solving, etc).</p>
+<p>This is when interpolation is super helpful.  Interpolation is just a rule for filling in the gaps in your function based on the data you have.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xI</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">yI</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">xI</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span><span class="n">yI</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic4a Scipy_63_0.png" src="_images/Topic4a Scipy_63_0.png" />
+</div>
+</div>
+<p>So that is our data.  Now we want to make a function that is defined on the entire range between the endpoints of our data</p>
+<p>Let’s just try the 1d interpolate function out of the box and see what it does</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_try</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span> <span class="n">yI</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_fine</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span><span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span><span class="n">yI</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fine</span><span class="p">,</span><span class="n">f_try</span><span class="p">(</span><span class="n">x_fine</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic4a Scipy_68_0.png" src="_images/Topic4a Scipy_68_0.png" />
+</div>
+</div>
+<p>Okay - so it looks like our default function is just drawing straight lines between the points.  This is exaclty what our plot is doing, and so we get the same sharp corners.  But if we fit with a polynomial between several points, we will get a smoother looking result.  E.g. using a cubic polynomial:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_cube</span><span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span> <span class="n">yI</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span><span class="n">yI</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fine</span><span class="p">,</span><span class="n">f_cube</span><span class="p">(</span><span class="n">x_fine</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic4a Scipy_71_0.png" src="_images/Topic4a Scipy_71_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fine</span><span class="p">,</span><span class="n">f_try</span><span class="p">(</span><span class="n">x_fine</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x_fine</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fine</span><span class="p">,</span><span class="n">f_cube</span><span class="p">(</span><span class="n">x_fine</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x_fine</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic4a Scipy_72_0.png" src="_images/Topic4a Scipy_72_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fine</span><span class="p">,</span><span class="n">f_cube</span><span class="p">(</span><span class="n">x_fine</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x_fine</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkorange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic4a Scipy_73_0.png" src="_images/Topic4a Scipy_73_0.png" />
+</div>
+</div>
+<p>So we see that our initial function was making about a 10% error.  Using a cubic instead, we get less than 1%.  In fact, for the early points we do really well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fine</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">f_cube</span><span class="p">(</span><span class="n">x_fine</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x_fine</span><span class="o">**</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic4a Scipy_75_0.png" src="_images/Topic4a Scipy_75_0.png" />
+</div>
+</div>
+<p>So we are getting 1 part in a 100 000 up to about <span class="math notranslate nohighlight">\(x=1\)</span> using only 40 data points for the full range of <span class="math notranslate nohighlight">\([0,\pi]\)</span></p>
+<p>Notice that the interpolation is a function.  So we can also use this function inside of our solving code:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">optimize</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">f_cube</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2532996656450621
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">1.2532996656450606</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.254977768854082e-05
+</pre></div>
+</div>
+</div>
+</div>
+<section id="operations-on-functions-interpolations">
+<h3>Operations on functions / interpolations<a class="headerlink" href="#operations-on-functions-interpolations" title="Permalink to this headline">#</a></h3>
+<p>One of the central reasons to use a spline is to a approximate a quantity we don’t know exactly.  For example, Scipy has a built in function that computes a numerical derivative</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.misc</span> <span class="kn">import</span> <span class="n">derivative</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000097369
+</pre></div>
+</div>
+</div>
+</div>
+<p>We could make our own very simple version:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_derivative</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="n">x0</span><span class="p">,</span><span class="n">dx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">g</span><span class="p">(</span><span class="n">x0</span><span class="o">+</span><span class="n">dx</span><span class="p">)</span><span class="o">-</span><span class="n">g</span><span class="p">(</span><span class="n">x0</span><span class="o">-</span><span class="n">dx</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_derivative</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.000000000097369
+</pre></div>
+</div>
+</div>
+</div>
+<p>We matched the result exactly.  Of course, that is just the default, derivative has many ways to improve. E.g. we can include more than just the difference of two poitns but include more points:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">derivative</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">dx</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0000000000075104
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, we notice that this just returns a number for a single point.  However, if we wanted the derivative as a function we could just take a bunch of derivatives and make an interpolating function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dh</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xI</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xI</span><span class="p">)):</span>
+    <span class="n">dh</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">derivative</span><span class="p">(</span><span class="n">h</span><span class="p">,</span><span class="n">xI</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">dx</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span><span class="n">order</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">dh_fnc</span><span class="o">=</span><span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span><span class="n">dh</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span><span class="n">h</span><span class="p">(</span><span class="n">xI</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span><span class="n">dh_fnc</span><span class="p">(</span><span class="n">xI</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x117003820&gt;]
+</pre></div>
+</div>
+<img alt="_images/Topic4a Scipy_93_1.png" src="_images/Topic4a Scipy_93_1.png" />
+</div>
+</div>
+<p>Now we can look for maxima</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_h</span><span class="o">=</span><span class="n">optimize</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">dh_fnc</span><span class="p">,</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">max_h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.886226905815053
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xI</span><span class="p">,</span><span class="n">h</span><span class="p">(</span><span class="n">xI</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">max_h</span><span class="p">,</span><span class="n">max_h</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mf">1.5</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic4a Scipy_96_0.png" src="_images/Topic4a Scipy_96_0.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="special-functions">
+<h2>Special Functions<a class="headerlink" href="#special-functions" title="Permalink to this headline">#</a></h2>
+<p>A common thing one encounters in physics is the need to use special functions.  Many of these are implemented in scipy for us:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">special</span> <span class="k">as</span> <span class="n">sp</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">102</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x116f66a60&gt;]
+</pre></div>
+</div>
+<img alt="_images/Topic4a Scipy_100_1.png" src="_images/Topic4a Scipy_100_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">102</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">sp</span><span class="o">.</span><span class="n">y0</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11735bc70&gt;]
+</pre></div>
+</div>
+<img alt="_images/Topic4a Scipy_101_1.png" src="_images/Topic4a Scipy_101_1.png" />
+</div>
+</div>
+<p>We don’t have a particular use for them right now, but this is something you will need in most scientific applications.</p>
+<p>It is also worth noting that these functions are defined in terms of complex arguments as well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">gamma</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="mf">0.1</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-0.4177906356943205+9.86028723231441j)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The behavior of functions for complex arguments is a very important subject.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">=</span><span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">102</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">pcolor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">sp</span><span class="o">.</span><span class="n">hankel1</span><span class="p">(</span><span class="mf">0.2</span><span class="p">,</span><span class="n">X</span><span class="o">+</span><span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span><span class="p">)),</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span><span class="n">shading</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PolyCollection at 0x116fe1340&gt;
+</pre></div>
+</div>
+<img alt="_images/Topic4a Scipy_106_1.png" src="_images/Topic4a Scipy_106_1.png" />
+</div>
+</div>
+<p>Scipy does not define all special functions for complex values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp</span><span class="o">.</span><span class="n">zeta</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">vh</span><span class="o">/</span><span class="n">rcz751b57355h3qzj37sc3080000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_80253</span><span class="o">/</span><span class="mf">817459801.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">sp</span><span class="o">.</span><span class="n">zeta</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span><span class="p">)</span>
+
+<span class="nn">/opt/anaconda3/lib/python3.9/site-packages/scipy/special/_basic.py</span> in <span class="ni">zeta</span><span class="nt">(x, q, out)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2570</span>     <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">2571</span><span class="s2">     if q is None:</span>
+<span class="ne">-&gt; </span><span class="mi">2572</span><span class="s2">         return ufuncs._riemann_zeta(x, out)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2573</span><span class="s2">     else:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2574</span><span class="s2">         return ufuncs._zeta(x, q, out)</span>
+
+<span class="ne">TypeError</span>: ufunc &#39;_riemann_zeta&#39; not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule &#39;&#39;safe&#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>We are going to see that scipy has a lot of built in code that is extremely powerful.  It is essentially built on top of numpy so they tend to work very well together.  What we hopefully learned in these examples is that there are really two things going on inside scipy: (1) an algorithm and (2) an implementation of the algorithm in terms of code.  The algorithm works on some premise that we can and should understand.  We can try our own version of the algorithm to get a deeper understanding of what scipy is doing.  Fundamentally, scipy is not doing anything deeper or more sophisticed than what we can code ourselves.  What scipy has really done is code it in a very fast way (probably using some neat python/C tricks we don’t know) and with lots of built in options that would be time consuming for us to do ourselves.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

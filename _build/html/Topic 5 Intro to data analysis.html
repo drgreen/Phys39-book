@@ -1,0 +1,1338 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Topic 5: Intro to Data Analysis &#8212; Physics 39 Notes</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Physics 39 Notes</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic0_Intro.html">
+   COGS 18: Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1a_Data.html">
+   Topic 1: Basics of Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Topic1b_Functions.html">
+   Topic 1b: Functions and Basic Operations
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/Topic 5 Intro to data analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FTopic 5 Intro to data analysis.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/Topic 5 Intro to data analysis.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signal-and-noise">
+   Signal and Noise
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-general-chi-2-minimization">
+   More general
+   <span class="math notranslate nohighlight">
+    \(\chi^2\)
+   </span>
+   minimization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#saving-data">
+     Saving Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Topic 5: Intro to Data Analysis</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#signal-and-noise">
+   Signal and Noise
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-regression">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-general-chi-2-minimization">
+   More general
+   <span class="math notranslate nohighlight">
+    \(\chi^2\)
+   </span>
+   minimization
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#saving-data">
+     Saving Data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="topic-5-intro-to-data-analysis">
+<h1>Topic 5: Intro to Data Analysis<a class="headerlink" href="#topic-5-intro-to-data-analysis" title="Permalink to this headline">#</a></h1>
+<p>Understanding and visulizing data is a central problem in the sciences and beyond.  We will begin with the very basics and we will return to discuss more advanced methods later in the course.</p>
+<p>The starting point for most data analysis is literally reading in the data so that you can use it in python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is how we open a generic text file.  We will print all the lines so you can see what the file looks line</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data1.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="c1"># &quot;r&quot; means we are reading the file</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># here is some preamble
+
+# here is some more preamble
+
+1.0,-0.6311688938249904,0.45488424301397556,1.4166838803401072,
+
+1.0909090909090908,0.1836650127781727,-1.2320204754180588,1.4640662255632122,
+
+1.1818181818181819,-1.2067884002340479,-0.9383912321268246,-1.4714065565433299,
+
+1.2727272727272727,-0.07397985995933759,1.8395768409168949,-0.0796575263423811,
+
+1.3636363636363638,-0.737654908251103,-1.2826141566048304,2.143318426612972,
+
+1.4545454545454546,-0.6352094090520055,1.196605783495026,-0.5272364016024303,
+
+1.5454545454545454,-1.3478569367857853,1.2726038119049938,-0.2387464313240688,
+
+1.6363636363636362,1.7643027277060235,-1.3358815620673254,0.42002797035543593,
+
+1.7272727272727273,1.1228898074019433,0.4373429207381663,-0.1053287323238627,
+
+1.8181818181818183,-1.9235573265400396,1.0784356569475517,-0.43585645156397873,
+
+1.9090909090909092,-2.5203822814363916,0.2925419990496477,-0.7175310482674775,
+
+2.0,-0.20414929117298058,1.8548073032642414,-1.6689147413533778,
+
+2.090909090909091,0.6621809483393832,-0.3051219239294479,1.1131763474375251,
+
+2.1818181818181817,0.3182087214669058,-0.042937245099687604,1.1752070761056175,
+
+2.2727272727272725,0.22912356066614792,0.29073506428594337,1.7818860311483344,
+
+2.3636363636363638,-0.3829663239804597,1.2152670827311336,-0.47144795060521066,
+
+2.4545454545454546,1.865932067710966,0.7675499181699784,0.12187118234859495,
+
+2.5454545454545454,-0.08836032079560019,-0.1666437043109095,0.626776483177752,
+
+2.6363636363636367,-0.1157667893960524,0.4901440432726023,0.4253528301358699,
+
+2.7272727272727275,0.24497585695544113,2.7752811189421585,0.343931167436819,
+
+2.8181818181818183,0.14888310641784397,0.9543988718029668,0.8880236302997588,
+
+2.909090909090909,-0.2114497883523676,-1.688434540970014,0.27935921952965387,
+
+3.0,1.0352247792742475,-1.0731955421188029,2.701509689543154,
+
+3.090909090909091,-0.8537914813011567,1.7509227026567182,-0.9552216026515601,
+
+3.1818181818181817,1.3722857219464086,-0.37647616008459883,-0.16025010581716082,
+
+3.272727272727273,0.053927881477298795,-1.3127359490133514,2.711507312349479,
+
+3.3636363636363638,-0.4068758845366948,0.7035038827738344,0.30365742503758647,
+
+3.4545454545454546,-0.44478474721640066,-1.4555517678140941,2.3713902873526815,
+
+3.5454545454545454,2.116426641034081,1.0109175166041757,1.7765903267105174,
+
+3.6363636363636362,0.11636504326654121,-0.39359214869578835,2.032829663570117,
+
+3.7272727272727275,0.8015329178643593,0.7273604384719508,1.227679834941189,
+
+3.8181818181818183,0.6456429398866661,-1.352494638078151,3.1188298852583616,
+
+3.909090909090909,1.613784466354094,0.04898448107888345,2.708345137790178,
+
+4.0,-1.41366205041043,1.0229177097053903,1.5199421945650475,
+
+4.090909090909091,-0.3421580136252812,-1.1187303130674546,0.7096631263875519,
+
+4.181818181818182,0.07888321542058939,0.8636770901568209,1.2864962209751158,
+
+4.272727272727273,1.8760741154369092,-1.3073459162098775,2.588484416332107,
+
+4.363636363636363,0.06585764882180982,0.8705697000713934,2.124660688963388,
+
+4.454545454545455,-0.22438214432973524,0.4027602740454191,3.066047039885218,
+
+4.545454545454545,-2.0491518156959208,0.9922030057065043,1.4647428779952012,
+
+4.636363636363637,0.5823994686118554,1.4178740616537855,1.1659646426268564,
+
+4.7272727272727275,1.1174069972630207,-0.04600732058846052,2.5796909818035645,
+
+4.818181818181818,-1.179141881111505,3.2015700262839704,0.07426732300802663,
+
+4.909090909090909,-0.5685640147773101,0.8422491785269339,1.9361054483673024,
+
+5.0,0.49560619172623754,1.378808545961349,2.772330131342585,
+
+5.090909090909091,0.24585784653847198,-0.20555502242005147,1.131185156172839,
+
+5.181818181818182,1.5643862123074455,-0.11958099935101546,1.3147100878015254,
+
+5.2727272727272725,-1.1151867423383657,0.5168985098872407,3.1046733325611573,
+
+5.363636363636363,-0.2726364668908259,-0.08699783939484457,3.2585070783888552,
+
+5.454545454545455,0.9001532285209066,1.3526696413293455,1.8728542161334232,
+
+5.545454545454546,-0.6202357596001613,2.007273180695664,1.2825433316035202,
+
+5.636363636363637,1.1819882134237294,-0.22142023759539192,2.365387520829122,
+
+5.7272727272727275,-0.5941962918244037,-0.14320348032695024,2.6040454782634064,
+
+5.818181818181818,-0.02477118308961286,0.9716562819146767,2.148810432530392,
+
+5.909090909090909,0.8327767577068002,-0.2927110377652543,3.069936739485766,
+
+6.0,-1.1556411055077778,1.4417724412287023,3.1886656103478708,
+
+6.090909090909091,-1.2168552986118735,0.4506696001559499,2.386898651226657,
+
+6.181818181818182,-0.6157921010281806,-0.497108647756321,0.05661589728718264,
+
+6.2727272727272725,-1.7671583367295978,1.135331434196452,2.817105149730652,
+
+6.363636363636364,0.13096635693994016,-0.22052459096032073,3.160826314988174,
+
+6.454545454545455,0.690294866968097,1.8963277920971895,4.487425364155156,
+
+6.545454545454546,2.371694887897769,0.27960637363250584,2.3644192911897908,
+
+6.636363636363637,1.273825402614828,0.8687499947091604,3.305655085108792,
+
+6.7272727272727275,0.37967675226481273,-1.3159423011413678,1.661604297176963,
+
+6.818181818181818,1.0948910337870426,1.3123807007747081,3.6798167626896023,
+
+6.909090909090909,-1.6205454405798412,2.9248119763275087,2.3917854722312857,
+
+7.0,0.735428855084481,1.7767204644281096,3.3694488806819884,
+
+7.090909090909091,-0.04455145140604422,-0.1371341937628388,2.642018658136439,
+
+7.181818181818182,-1.5357456259373374,1.604807734797527,4.412411518091927,
+
+7.2727272727272725,-2.009658212034761,-0.7726057755922854,4.155582143990508,
+
+7.363636363636364,2.374179182366948,1.0793284192789065,3.170149680288414,
+
+7.454545454545455,-0.6902691820562796,0.3217260254744907,2.865907753457373,
+
+7.545454545454546,-0.15763329565736972,-0.2569440439920063,3.368592679754569,
+
+7.636363636363637,0.9242345372372889,0.27667266297441834,3.637880473686003,
+
+7.7272727272727275,-3.1875997601455275,2.199806115530024,2.1096391833912675,
+
+7.818181818181818,-1.1718948899473165,0.10319898990813686,4.576445271388832,
+
+7.909090909090909,0.9785580968322369,0.009469202542572108,4.49391127399047,
+
+8.0,-0.8665677410547212,-0.17314343767459317,5.313216187997888,
+
+8.09090909090909,-1.6213716879341697,1.1684574860898165,3.19369658313685,
+
+8.181818181818182,-0.06367514456694123,1.4356964984967884,5.912587734389751,
+
+8.272727272727273,0.7401111090339849,0.43828138891593493,4.616231505466975,
+
+8.363636363636363,1.446697225209474,0.2686299890785137,6.166373213464694,
+
+8.454545454545455,2.0171465823853088,1.7122578969698194,4.543006941829624,
+
+8.545454545454547,0.05547192247442552,-0.6291651473329716,4.507974800623014,
+
+8.636363636363637,-0.0197020770305536,0.9233026597415765,6.920201295831565,
+
+8.727272727272727,-0.4911129241676753,1.6061208531128814,3.8010877096815032,
+
+8.818181818181818,2.069890341411209,-0.209459536509214,6.761139952443798,
+
+8.90909090909091,0.032529746059397326,-1.754907126230721,5.2962287556147905,
+
+9.0,1.4366854455763804,-0.9398701401824869,6.13375599845889,
+
+9.090909090909092,-1.0881560738374398,0.7241679159272209,7.010425652001209,
+
+9.181818181818182,0.4358544140396277,0.2484598305057409,4.543475541105149,
+
+9.272727272727273,0.47595695530935767,1.8022691191471243,5.451213213875634,
+
+9.363636363636363,0.6720375552319127,2.6861025069373134,7.9347242752625275,
+
+9.454545454545455,0.15566217413846836,0.9488508609031605,5.960063077396186,
+
+9.545454545454545,0.5227159219087347,-0.20599329826767998,7.820105590320214,
+
+9.636363636363637,-0.23146925909689864,0.6207016561335794,5.959715623500961,
+
+9.727272727272727,-0.5167395516639268,0.7343253426310082,5.3781930296290685,
+
+9.818181818181818,-0.005145926712907867,1.8884676984294115,6.645049022367959,
+
+9.90909090909091,2.167391340402733,1.8142239879060225,6.244150828030593,
+
+10.0,0.7589063994652221,-0.4915403755397779,8.432902602792572,
+</pre></div>
+</div>
+</div>
+</div>
+<p>Reading the 3rd line we see that the data is organized as time,data,data,data.  Our goal is to read in this data.  We need to do two things: (1) we also want to skip over the preamble that starts with #.  (2)we want to save the data into 4 arrays, one for the time and 3 others for the time series data. Here is how we can do it.  First, we notice there is a nice command</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">txt1</span><span class="o">=</span><span class="s1">&#39;#preamble&#39;</span>
+<span class="n">txt2</span><span class="o">=</span><span class="s1">&#39;data&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">txt1</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">),</span><span class="n">txt2</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True False
+</pre></div>
+</div>
+</div>
+</div>
+<p>Second we notice that we can split a string into pieces as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string1</span><span class="o">=</span><span class="s1">&#39;Welcome to UC San Diego&#39;</span>
+<span class="n">string2</span><span class="o">=</span><span class="s1">&#39;comma,separated,words&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string1</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string2</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span><span class="n">string2</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Welcome&#39;, &#39;to&#39;, &#39;UC&#39;, &#39;San&#39;, &#39;Diego&#39;]
+[&#39;comma,separated,words&#39;]
+[&#39;comma&#39;, &#39;separated&#39;, &#39;words&#39;]
+words separated
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using split(), we can isolate particular pieces from a given line in the file. Putting these together we can load the data as</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_temp</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">l1_temp</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">l2_temp</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">l3_temp</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data1.txt&quot;</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="c1"># &quot;r&quot; means we are reading the file</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">)</span><span class="o">==</span><span class="kc">False</span><span class="p">:</span>
+        <span class="n">spl</span><span class="o">=</span><span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        <span class="n">t_temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">spl</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">l1_temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">spl</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">l2_temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">spl</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="n">l3_temp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">spl</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span> 
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">t_temp</span><span class="p">)</span>
+<span class="n">d1</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">l1_temp</span><span class="p">)</span>
+<span class="n">d2</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">l2_temp</span><span class="p">)</span>
+<span class="n">d3</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">l3_temp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 5 Intro to data analysis_12_0.png" src="_images/Topic 5 Intro to data analysis_12_0.png" />
+</div>
+</div>
+<p>We have successfully loaded our data and made a quick plot to see that it makes sense.  It certainly looks like some data, but what do we do with it?</p>
+<section id="signal-and-noise">
+<h2>Signal and Noise<a class="headerlink" href="#signal-and-noise" title="Permalink to this headline">#</a></h2>
+<p>The central idea in most basic analyses is that our data can be thought of as the sum of two pieces $<span class="math notranslate nohighlight">\({\rm data} = {\rm signal}+{\rm noise}\)</span>$</p>
+<p>The <strong>signal</strong> is typically deterministic: in this case, it is some specific function of time that we are trying to measure.</p>
+<p>The <strong>noise</strong> is random: it is usually assumed to be uncorrelated between bins and drawn from a Gaussian with zero mean.  I.e. it is a random number drawn from a distribution that is added to our answer, but whose average is zero.</p>
+<p>To see why this is important, let us assume that our signal is just a constant: <span class="math notranslate nohighlight">\({\rm signal}(t) = S\)</span> and our noise is drawn from a Gaussian distribution with variance <span class="math notranslate nohighlight">\(\sigma\)</span>.  Suppose our data is composed of <span class="math notranslate nohighlight">\(N\)</span> measurements.  What we notice is that is we write
+$<span class="math notranslate nohighlight">\(\sum ({\rm data}- {\rm signal}) = \sum {\rm noise}\)</span><span class="math notranslate nohighlight">\(
+The right hand side is a random walk just like we did earlier in the course. We expect that average size of the RHS is set by the RMS distance of a random walk, \)</span>\sqrt{N}\sigma<span class="math notranslate nohighlight">\(.  On the other hand \)</span>\sum {\rm signal} = N S<span class="math notranslate nohighlight">\(, so as we take more data our signal will stand out, even if \)</span>S \ll \sigma$.</p>
+<p>We can see how this works by simulating some data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">time_data</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">S</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">S</span><span class="o">+</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">sigma</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sdata</span><span class="o">=</span><span class="n">time_data</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">noSdata</span><span class="o">=</span><span class="n">time_data</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="n">S</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Sdata</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">noSdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x118c4d970&gt;]
+</pre></div>
+</div>
+<img alt="_images/Topic 5 Intro to data analysis_19_1.png" src="_images/Topic 5 Intro to data analysis_19_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sdata</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">noSdata</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(73.26919421792911, 32.936932809431816)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We get a bigger answer for the case with <span class="math notranslate nohighlight">\(S=0.1\)</span> even though they look identical on the time series.  Let’s check this isn’t an accident</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S_list</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">noS_list</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">S_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_data</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="n">noS_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_data</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span><span class="n">S</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_h</span><span class="p">,</span><span class="n">ax_h</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax_h</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">S_list</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">noS_list</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 5 Intro to data analysis_23_0.png" src="_images/Topic 5 Intro to data analysis_23_0.png" />
+</div>
+</div>
+<p>We see that there is a clear difference between the two distributions.  We can repeat it with more points to see that this difference becomes more pronounced.  If we make it 10000 data points, we should expect the <span class="math notranslate nohighlight">\(S=0.1\)</span> distribution to move to around 1000, while the <span class="math notranslate nohighlight">\(S=0\)</span> will be rought between -100 and 100 at 1<span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Sdata</span><span class="o">=</span><span class="n">time_data</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">noSdata</span><span class="o">=</span><span class="n">time_data</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="n">S</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Sdata</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">noSdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x119152e50&gt;]
+</pre></div>
+</div>
+<img alt="_images/Topic 5 Intro to data analysis_25_1.png" src="_images/Topic 5 Intro to data analysis_25_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">S_Llist</span><span class="o">=</span><span class="p">[]</span>
+<span class="n">noS_Llist</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">S_Llist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_data</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="n">noS_Llist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time_data</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="n">S</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_h</span><span class="p">,</span><span class="n">ax_h</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">ax_h</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">S_Llist</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">noS_Llist</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 5 Intro to data analysis_27_0.png" src="_images/Topic 5 Intro to data analysis_27_0.png" />
+</div>
+</div>
+<p>Now suppose we want to measure the value of <span class="math notranslate nohighlight">\(S\)</span> in our data.  Suppose the true value of <span class="math notranslate nohighlight">\(S\)</span> is <span class="math notranslate nohighlight">\(S_0\)</span>.  Let’s just try to guess a value of <span class="math notranslate nohighlight">\(S\)</span> and calculate
+$<span class="math notranslate nohighlight">\( \sum ({\rm data}-S)^2 = \sum (S_0+{\rm noise} - S)^2\)</span><span class="math notranslate nohighlight">\(
+Now notice that the sum over \)</span>N<span class="math notranslate nohighlight">\( is just \)</span>N<span class="math notranslate nohighlight">\( times the average, so as we take \)</span>N<span class="math notranslate nohighlight">\( to be large, this is just \)</span>N<span class="math notranslate nohighlight">\( times the statistical average.  This is useful because we know the statistical properties of the noise:
+\)</span><span class="math notranslate nohighlight">\(\sum (S_0+{\rm noise} - S)^2 = N(S_0-S)^2 + N \sigma^2\)</span><span class="math notranslate nohighlight">\(
+Notice that this is the sum of two positive terms and the answer is minimized when \)</span>S=S_0$.</p>
+<p>So let’s see how accurate a measure of <span class="math notranslate nohighlight">\(S\)</span> we can make by just minimizing this quantity.  I happen to know that the noise has <span class="math notranslate nohighlight">\(\sigma=1\)</span> so this quantity is equivalent to <span class="math notranslate nohighlight">\(\chi^2\)</span> (otherwise it would be <span class="math notranslate nohighlight">\(\sigma^2 \times \chi^2\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_ref</span><span class="o">=</span><span class="n">time_data</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">chisqr</span><span class="p">(</span><span class="n">S</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">data_ref</span><span class="o">-</span><span class="n">S</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Srange</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">chi_out</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Srange</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Srange</span><span class="p">)):</span>
+    <span class="n">chi_out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">chisqr</span><span class="p">(</span><span class="n">Srange</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Srange</span><span class="p">,</span><span class="n">chi_out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1196a64f0&gt;]
+</pre></div>
+</div>
+<img alt="_images/Topic 5 Intro to data analysis_31_1.png" src="_images/Topic 5 Intro to data analysis_31_1.png" />
+</div>
+</div>
+<p>Given what we know about equation solving, we could find this minimum ourselves.  However, finding minimima or maxima rapidly becomes a hard problem, so we are going to make our life easier by using a built in minimization tool:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="n">chisqr</span><span class="p">,</span><span class="mf">0.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 10021.709376890643
+ hess_inv: array([[5.00000006e-05]])
+      jac: array([0.])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 12
+      nit: 2
+     njev: 6
+   status: 0
+  success: True
+        x: array([0.10832072])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_ref2</span><span class="o">=</span><span class="n">time_data</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="n">S</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:((</span><span class="n">data_ref2</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="mf">0.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 9995.363735213523
+ hess_inv: array([[4.99999988e-05]])
+      jac: array([0.])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 12
+      nit: 2
+     njev: 6
+   status: 0
+  success: True
+        x: array([0.00232596])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Minimize works more or less like our Newton solver (at this level): it takes a function and an initial point and finds a nearby point where the function is minimized (presumably where the derivative vanishes).</p>
+<p>Using this insight, we see that minimizing this function does a pretty good job of finding the correct value of <span class="math notranslate nohighlight">\(S\)</span>.  When we put in <span class="math notranslate nohighlight">\(S_0=0.1\)</span> we measured <span class="math notranslate nohighlight">\(S=0.0916426\)</span> and when we put <span class="math notranslate nohighlight">\(S_0=0\)</span> we measured <span class="math notranslate nohighlight">\(S=0.02035976\)</span>.  In a future class, we will talk about how to give this measurements error-bars.</p>
+</section>
+<section id="linear-regression">
+<h2>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">#</a></h2>
+<p>The natural next step is to fit a line to the data that we uploaded from a file.  This is a thing one typically does as a first guess given data that we don’t totally understand: a line has enough freedom to capture some overall behavior, but is sufficiently simple that we aren’t going to overfit (i.e. the function is just finding patterns in the noise).</p>
+<p>There are lots of build in functions that will give you a best fit line.  For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="n">slope1</span><span class="p">,</span> <span class="n">intercept1</span><span class="p">,</span> <span class="n">r_value1</span><span class="p">,</span> <span class="n">p_value1</span><span class="p">,</span> <span class="n">std_err1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">slope1</span><span class="p">,</span> <span class="n">intercept1</span><span class="p">,</span> <span class="n">r_value1</span><span class="p">,</span> <span class="n">p_value1</span><span class="p">,</span> <span class="n">std_err1</span><span class="p">)</span>
+<span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.044053980142284774 -0.17318253969528752 0.10331235714633374 0.30636705556359395 0.04284396708900212
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LinregressResult(slope=0.044053980142284774, intercept=-0.17318253969528752, rvalue=0.10331235714633374, pvalue=0.30636705556359395, stderr=0.04284396708900212, intercept_stderr=0.26108947495494694)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope2</span><span class="p">,</span> <span class="n">intercept2</span><span class="p">,</span> <span class="n">r_value2</span><span class="p">,</span> <span class="n">p_value2</span><span class="p">,</span> <span class="n">std_err2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d2</span><span class="p">)</span>
+<span class="n">slope3</span><span class="p">,</span> <span class="n">intercept3</span><span class="p">,</span> <span class="n">r_value3</span><span class="p">,</span> <span class="n">p_value3</span><span class="p">,</span> <span class="n">std_err3</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What most such algorithms are doing is the same as what we did above, but now where we assume that $<span class="math notranslate nohighlight">\({\rm data} = a t + b + {\rm noise}\)</span><span class="math notranslate nohighlight">\( where \)</span>t<span class="math notranslate nohighlight">\( is time, \)</span>a<span class="math notranslate nohighlight">\( and \)</span>b<span class="math notranslate nohighlight">\( are constants.  Following what we did before, you guess that if you calculate  \)</span><span class="math notranslate nohighlight">\(\sum ({\rm data}-a t - b)^2\)</span><span class="math notranslate nohighlight">\(
+you can minimize with respect to \)</span>a<span class="math notranslate nohighlight">\( and \)</span>b$ to find your “best fit” line.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:((</span><span class="n">data_ref2</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="mf">0.4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 9995.363735213523
+ hess_inv: array([[4.99999988e-05]])
+      jac: array([0.])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 12
+      nit: 2
+     njev: 6
+   status: 0
+  success: True
+        x: array([0.00232596])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">X</span><span class="p">:((</span><span class="n">d1</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]),</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.04405392, -0.17318235])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope1</span><span class="p">,</span> <span class="n">intercept1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.044053980142284774, -0.17318253969528752)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">X</span><span class="p">:((</span><span class="n">d2</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]),</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.06501928, 0.11842078])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope2</span><span class="p">,</span> <span class="n">intercept2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0650193686177917, 0.11842051937262404)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">X</span><span class="p">:((</span><span class="n">d3</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]),</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.73878142, -1.35719998])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope3</span><span class="p">,</span> <span class="n">intercept3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.7387814055506847, -1.3571997755399319)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that our minimization procedure is reproducing the linear regression results, pretty close to exactly.  However, this does not guarantee that we have a good fit to the data. To see how well we are doing we are going to plot the data vs the best fit line, and also a histogram of our error:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig_h</span><span class="p">,</span><span class="n">ax_h</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">ncols</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">nrows</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d1</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">slope1</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">intercept1</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d2</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">slope2</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">intercept2</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d3</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">slope3</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">intercept3</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">d1</span><span class="o">-</span><span class="n">slope1</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept1</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">d2</span><span class="o">-</span><span class="n">slope2</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept2</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">d3</span><span class="o">-</span><span class="n">slope3</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept3</span><span class="p">,</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d1</span><span class="o">-</span><span class="n">slope1</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept1</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d2</span><span class="o">-</span><span class="n">slope2</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept2</span><span class="p">)</span>
+<span class="n">ax_h</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d3</span><span class="o">-</span><span class="n">slope3</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/Topic 5 Intro to data analysis_51_0.png" src="_images/Topic 5 Intro to data analysis_51_0.png" />
+</div>
+</div>
+<p>These plots look pretty good.  What about the <span class="math notranslate nohighlight">\(\chi^2\)</span> after removing the best fit line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">d1</span><span class="o">-</span><span class="n">slope1</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),((</span><span class="n">d2</span><span class="o">-</span><span class="n">slope2</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),((</span><span class="n">d3</span><span class="o">-</span><span class="n">slope3</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">intercept3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(123.878341340528, 114.2267169116914, 124.2774840597678)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">d1</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),(</span><span class="n">d2</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),(</span><span class="n">d3</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(125.69249389635905, 139.79811466358296, 1232.430424286052)
+</pre></div>
+</div>
+</div>
+</div>
+<p>At first sight, everything looks fine.  Interestingly, not all the data was made with a straight line.  The first two, d1 and d2 were, but d3 was actually made with a parabola:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">slope3</span><span class="o">*</span><span class="n">t</span><span class="o">+</span><span class="n">intercept3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="mf">0.07</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x118ce8a30&gt;
+</pre></div>
+</div>
+<img alt="_images/Topic 5 Intro to data analysis_56_1.png" src="_images/Topic 5 Intro to data analysis_56_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">((</span><span class="n">d3</span><span class="o">-</span><span class="mf">0.07</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>107.98045329875646
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-general-chi-2-minimization">
+<h2>More general <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization<a class="headerlink" href="#more-general-chi-2-minimization" title="Permalink to this headline">#</a></h2>
+<p>We can now see that pattern for finding a set of best fit parameters for any model given the data. Suppose with think our signal is described by a model <span class="math notranslate nohighlight">\(S(t; \vec X)\)</span> where <span class="math notranslate nohighlight">\(\vec X\)</span> is a list of parameters decribing the model.  Now we caculate $<span class="math notranslate nohighlight">\( \sum (data-S(t;\vec X))^2\)</span><span class="math notranslate nohighlight">\( and we find the minimum in terms of the components of \)</span>X$.</p>
+<p>For example, we can add allow our data to be modelled by a parabola instead of just a line as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">X</span><span class="p">:((</span><span class="n">d3</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="o">-</span><span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">]),</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.06909539, -0.02126793,  0.25711986])
+</pre></div>
+</div>
+</div>
+</div>
+<p>For simple models like this one, this is a relatively straightforward minimization problem: after adding up all the data, we have quadratic polynomial in a small number of variables.  However, for more complicated models (and data) finding the minimum can be extremely difficult.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">+=</span><span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="n">i</span>
+    <span class="k">return</span> <span class="n">model</span>
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">d3</span><span class="o">-</span><span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">n</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9831016539991.152
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xsol</span><span class="o">=</span><span class="n">minimize</span><span class="p">(</span><span class="n">g</span><span class="p">,</span><span class="mf">0.1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">model</span><span class="p">(</span><span class="n">Xsol</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">d3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x11c9bd5b0&gt;
+</pre></div>
+</div>
+<img alt="_images/Topic 5 Intro to data analysis_65_1.png" src="_images/Topic 5 Intro to data analysis_65_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">(</span><span class="n">Xsol</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>223.83679406449997
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will see more advanced strategies for dealing with these kinds of higher dimensional problems.  We are really just scratching the surface of an enormous problem - many AI/machine learning techniques boil down to minimizing some nonlinear function of a large number of parameters.  In some cases, it is more or less obvious what it is you want to minimize and all the new ideas correspond to better or faster ways to find the minima.</p>
+<section id="saving-data">
+<h3>Saving Data<a class="headerlink" href="#saving-data" title="Permalink to this headline">#</a></h3>
+<p>The final thing you might like to do is to write your own data to a file.  Sometimes you do a long calculation and you don’t want to have to recaclulate it every time you want to make a figure, for example.</p>
+<p>The most basic form of writing to a file is the opposite of what we did above</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;save_data_test.txt&quot;</span><span class="p">,</span><span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="c1"># &#39;w&#39; means writes (over the existing file), </span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# here is some preamble</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;# here is some more preamble</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">t</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">())</span><span class="o">+</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Often you may want to save something that is already in the form of an array or a python friendly object.  There are LOTS of ways to do this (pandas is a popular library with lots of options, pickle is also popular).  Hoever, the key idea is always the same: some library has a way of saving and reading a type of object that is pretty fast.  E.g. numpy has a save option:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outdata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;save_random.npy&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="c1"># wb means write binary</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">outdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;save_random.npy&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span> <span class="c1"># rb means read binary</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.03002025,  0.00499972,  2.20272249,  0.93718007, -0.73457729,
+        0.1026948 ,  0.9326486 , -1.23753954, -0.6683426 ,  0.63154469,
+        0.03387877,  0.05173207,  1.61720902,  0.91362643,  1.31595132,
+        0.07050893,  0.07994994,  0.82634069,  0.95440388, -0.57197621,
+        1.16827072,  0.5951539 , -0.30835454, -0.30584918,  1.25696243,
+        0.53151064, -0.232946  ,  2.67897576,  0.24809352,  0.26101645,
+        0.010932  ,  0.07185484,  0.78916673, -0.49623967,  0.91040297,
+       -1.61774958,  0.91566358,  1.41789552,  0.63613987,  0.09141981,
+        0.04572991,  1.12676086, -0.1788278 , -1.02545467, -0.25777552,
+       -0.71024824, -1.37957746, -0.36780949, -1.96115253,  1.0337218 ,
+        0.08835859, -0.69881502,  1.11529155, -0.50769532,  1.7751325 ,
+       -1.63346503,  0.03132033,  1.49153611, -1.46285944, -1.18180825,
+       -1.38527429,  0.88965581,  0.93239828, -0.90770296,  0.64296413,
+        0.69442768,  0.84708215,  0.61316581, -0.8077909 , -1.48010746,
+        0.68964006, -0.10916175, -1.57473748,  1.06791772, -0.40219558,
+       -1.42604171,  0.01387139, -1.60302752, -1.01280638, -0.328443  ,
+       -0.47033964, -1.6931081 , -0.26711296, -1.50076608,  0.30127925,
+        0.17237595,  1.22593576, -1.47063089,  2.10344852, -0.53858586,
+       -0.71971004,  0.33781148,  0.74971401,  1.02150393,  0.02875854,
+       -0.15850553,  1.58151284, -0.82462812,  0.5494779 , -1.3755315 ])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>We have just started to scratch the surface of how do deal with data.  However, we were able to see the most basic problems in data analysis in some relatively simple form: (1) data cleaning - getting your data stored in a useful way, (2) data visulization - understanding what your data represents, (3) data analysis - separating the signal from the noise, (4) store your work for easy use in the future.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
