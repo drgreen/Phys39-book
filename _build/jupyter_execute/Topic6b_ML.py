@@ -54,7 +54,10 @@ ytrain=y[::5]
 
 # Most basic algorithms are designed to minimize some kind of "cost function" (or kernel).  The idea is that when you have a good model, this cost function (whatever it is) will be small.
 # 
-# We will start by using a method that will look quite familiar.  We will choose the kernel RBF defined by $$ k\left(x_{i}, x_{j}\right)=\exp \left(-\frac{d\left(x_{i}, x_{j}\right)^{2}}{2 l^{2}}\right)$$
+# We will start by using a method that will look quite familiar.  We will choose the kernel RBF defined by 
+# 
+# $$ k\left(x_{i}, x_{j}\right)=\exp \left(-\frac{d\left(x_{i}, x_{j}\right)^{2}}{2 l^{2}}\right)$$
+# 
 # where $d$ is the distance between the two results.
 
 # In[6]:
@@ -157,8 +160,13 @@ ax[1,1].set_title('Prediction')
 # At a very surface level there is essentially no difference betweew "machine learning" and our data analysis techniques. Both are attempts to give the best possible model of a data set by finding extremes of a given function.
 # 
 # However, if we think back on our experience solving equations or finding minima / maximima, we recall that the computer could easily get into trouble.  Finding minimima is not always easy, especially if you don't have a good starting place. While all of the focus may sound like it is the choice of the function we are minimizing, the reality is that the real challenge is finding the minimum.  As an illustration - suppose I want my ML algorithm to find a solution to a differential equation.  I.e. we want to find the function $x(t)$ that satisfies 
+# 
 # $$\ddot x(t)+\omega_0^2 x(t) =0$$.  
-# If is very easily to define this as a minimization problem: find $x(t)$ so that we minimize $$(\ddot x(t)+\omega_0^2 x(t))^2$$
+# 
+# If is very easily to define this as a minimization problem: find $x(t)$ so that we minimize 
+# 
+# $$(\ddot x(t)+\omega_0^2 x(t))^2$$
+# 
 # However, $x(t)$ is a function, so finding its value at every point in $t \in (0, 100)$ requires minimizing over a very large number of parameters (100s or 1000s depending on how finely we need to know $x(t)$).  In this precise sense, ML / AI is often a name for a rapid method to minimize functions to a given approximation.
 
 # In[ ]:

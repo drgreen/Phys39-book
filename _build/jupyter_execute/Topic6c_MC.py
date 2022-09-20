@@ -21,7 +21,9 @@ from scipy import integrate
 # Recall that one task we might want to perform on in this parameter space is integration.  Concretely, I need to integrate over some parameters to marginalize over their uncertainty.  While easy to state, numerically integrating in high dimensional spaces is very difficult and is a window in the broader challenges one can encounter.  
 
 # To see the problem, let's remember that the volume of a d-dimensional ball of radius 1 is 
+# 
 # $$ V_d = \frac{\pi^{d/2}}{ \Gamma[\frac{d}{2}+1]}$$
+# 
 # However, if we stick this sphere inside a d-dimensional box where the sphere touches the edges, so that each length of the box is the diameter, 2, then the volume of the enclosing box is $2^d$
 
 # In[2]:
@@ -190,9 +192,11 @@ plt.show()
 # However, the key idea that is common to all of them is that we have a probability distribution that allows us to increase the chance of finding the most important parts of parameter space.  In advanced techniques, this probabilty adjust to the function itself, allowing it to find the highest points more easily.  Here is will simply choose one and see how to tell when we've made a good choice.
 
 # Importance sampling is the generalization of the above when we don't pick a uniform distribution.  Suppose instead that a pick points from a  distribution $p(x)$ and I want to compute $\int d^d x q(\vec x) p(\vec x) = \langle q(\vec x) \rangle$.  Now if we define $q(\vec x) = f(\vec x) / p(\vec x)$ this is also equivalent to $\int d^d x f(\vec x) \equiv Q$.  Now we draw from the distribution $p(\vec x)$ we get
+# 
 # $$
 # Q_N = V \frac{1}{N} \sum_{i =1}^{N} q(\vec x_i) 
 # $$
+# 
 # where $\vec x_i$ are drawn from $p(\vec x)$ then we again have $Q_N \to Q$.  As long as $p(\vec x)$ and $q(\vec x)$ can be chosen to that they are large in the same areas, we might expect to find faster convergence to the correct answer.
 
 # Let's start by recalculating the volume of the sphere.  We are going to have $p(\vec x) = e^{-|\vec x|^2/(2 \sigma^2)}/\sqrt{2\pi \sigma^2}$ and $f(\vec x)=1$ where $x^2 \leq 1$ and 0 otherwise and therefore $q(\vec x) = f(\vec x) / p(\vec x)$ is $1/p(\vec x_i)$ when $\vec x_i$ is inside the sphere and 0 otherwise.

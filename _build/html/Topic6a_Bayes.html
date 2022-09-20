@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Topic0_Intro.html">
-   Physics 39: Scientific Computing with Python
+   Topic 0: Introduction
   </a>
  </li>
  <li class="toctree-l1">
@@ -492,9 +492,10 @@ title="Print to PDF"
 </div>
 <p>We have talked about data analysis thus far with using the word “error bar”.  This is a somewhat shocking omision, as data without errors are pretty useless. However, our goal in this course is not just to give you a tool that you don’t understand, but to teach you what the tools are for.  Error bars are an extreme example, as they are both the most important part of any scientific analysis and yet are the piece most likely to be wrong.</p>
 <p>A good way understand errors and apply them effectively is to think like a Bayesian.  The reason is that it puts you and your hypotheses right in the middle of the action so that you can see how your choices matter.</p>
-<p>To get us started, this is Bayes’ Theorem:
-$<span class="math notranslate nohighlight">\(P(H | D) = P(H) P(D|H) / P(D)\)</span><span class="math notranslate nohighlight">\(
-Where \)</span>P(H|D)<span class="math notranslate nohighlight">\( is the probability of the Hypothesis (\)</span>H<span class="math notranslate nohighlight">\() given the data (\)</span>D<span class="math notranslate nohighlight">\() and vise versa for \)</span>P(D|H)<span class="math notranslate nohighlight">\(, and \)</span>P(H)<span class="math notranslate nohighlight">\( (\)</span>P(D)$) is the probability of the hypothesis (data).</p>
+<p>To get us started, this is Bayes’ Theorem:</p>
+<div class="math notranslate nohighlight">
+\[P(H | D) = P(H) P(D|H) / P(D)\]</div>
+<p>Where <span class="math notranslate nohighlight">\(P(H|D)\)</span> is the probability of the Hypothesis (<span class="math notranslate nohighlight">\(H\)</span>) given the data (<span class="math notranslate nohighlight">\(D\)</span>) and vise versa for <span class="math notranslate nohighlight">\(P(D|H)\)</span>, and <span class="math notranslate nohighlight">\(P(H)\)</span> (<span class="math notranslate nohighlight">\(P(D)\)</span>) is the probability of the hypothesis (data).</p>
 <p>I always find this very hard to understand.  There are a bunch of variables I don’t know what they mean.  So, let’s think about a simple example:</p>
 <section id="example-hit-by-a-taxi">
 <h2>Example: Hit by a Taxi<a class="headerlink" href="#example-hit-by-a-taxi" title="Permalink to this headline">#</a></h2>
@@ -503,11 +504,13 @@ Where \)</span>P(H|D)<span class="math notranslate nohighlight">\( is the probab
 <div class="math notranslate nohighlight">
 \[P(H={\rm blue}|D) = \frac{0.15 \times 0.8}{0.15 \times 0.8 + 0.85 \times 0.2} \sim 0.41\]</div>
 <p>Notice that if if the eye witness is perfect (<span class="math notranslate nohighlight">\(P(D|H) = 1\)</span>), our answer is 1, as it should be.</p>
-<p>The probability of the data, <span class="math notranslate nohighlight">\(P(D)\)</span>, doesn’t actually depend on the hypothesis: it is a sum over all possibilities.  Its role in life is just to make the probability normalized to one.  To see this, we note that the only two options are that you got hit by a blue taxi or a green taxi.  If we were to now ask “what is the probability you were hit by a green taxi?”, we would have to change <span class="math notranslate nohighlight">\(𝑃(𝐷|𝐻)=0.2\)</span> (there is only a 20% chance that the witness would think it was blue if it was really green) but the probability of the hypothesis itself should <span class="math notranslate nohighlight">\(P(H) = 0.85\)</span> since 85% of taxis are green.  But the probability of the data stays the same, since we already enumated all the possibilities.  This means that
-$<span class="math notranslate nohighlight">\(P(H={\rm Green}|D) = \frac{0.2 \times 0.85}{0.15 \times 0.8 + 0.85 \times 0.2} \sim 0.59\)</span><span class="math notranslate nohighlight">\(
-Notice that now 
-\)</span><span class="math notranslate nohighlight">\(P(H={\rm Green}|D) + P(H={\rm Blue}|D) = 1\)</span><span class="math notranslate nohighlight">\(
-This is really what Bayes' theorem is all about: one of the hypotheses must be true, so if \)</span>P(H|D)$ is really a probability, then it must add to up one when we sum over all the possibility.  Bayes’ theorem is just reminding us how to do that.</p>
+<p>The probability of the data, <span class="math notranslate nohighlight">\(P(D)\)</span>, doesn’t actually depend on the hypothesis: it is a sum over all possibilities.  Its role in life is just to make the probability normalized to one.  To see this, we note that the only two options are that you got hit by a blue taxi or a green taxi.  If we were to now ask “what is the probability you were hit by a green taxi?”, we would have to change <span class="math notranslate nohighlight">\(𝑃(𝐷|𝐻)=0.2\)</span> (there is only a 20% chance that the witness would think it was blue if it was really green) but the probability of the hypothesis itself should <span class="math notranslate nohighlight">\(P(H) = 0.85\)</span> since 85% of taxis are green.  But the probability of the data stays the same, since we already enumated all the possibilities.  This means that</p>
+<div class="math notranslate nohighlight">
+\[P(H={\rm Green}|D) = \frac{0.2 \times 0.85}{0.15 \times 0.8 + 0.85 \times 0.2} \sim 0.59\]</div>
+<p>Notice that now</p>
+<div class="math notranslate nohighlight">
+\[P(H={\rm Green}|D) + P(H={\rm Blue}|D) = 1\]</div>
+<p>This is really what Bayes’ theorem is all about: one of the hypotheses must be true, so if <span class="math notranslate nohighlight">\(P(H|D)\)</span> is really a probability, then it must add to up one when we sum over all the possibility.  Bayes’ theorem is just reminding us how to do that.</p>
 </section>
 <section id="application-coin-flipping">
 <h2>Application: coin flipping<a class="headerlink" href="#application-coin-flipping" title="Permalink to this headline">#</a></h2>
@@ -542,17 +545,19 @@ This is really what Bayes' theorem is all about: one of the hypotheses must be t
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>545.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>563.0
 </pre></div>
 </div>
 </div>
 </div>
 <p>Getting 550 heads is possible but very unlikely when <span class="math notranslate nohighlight">\(p=1/2\)</span> (a fair coin).  Instead, let’s apply the machinary of Bayes:</p>
-<p>Let’s say we have <span class="math notranslate nohighlight">\(N\)</span> total flips and get <span class="math notranslate nohighlight">\(n\)</span> heads.  The probably of finding <span class="math notranslate nohighlight">\(n\)</span> heads for a given <span class="math notranslate nohighlight">\(p\)</span> gives us the probabability of the data (the likelihood):
-$<span class="math notranslate nohighlight">\(P(D | H) = P(n | r) = p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big)\)</span><span class="math notranslate nohighlight">\(
-where we have the binomial coefficient \)</span>\Big(\frac{N}{n} \Big)<span class="math notranslate nohighlight">\( which accounts for all the possible ways of getting \)</span>n<span class="math notranslate nohighlight">\( heads (e.g. if you get only \)</span>n=1$, it could have been on the first, second…,last flip of the coin).</p>
-<p>We have no idea what the probably of the different models is, so we will assume a flat distribution <span class="math notranslate nohighlight">\(P(p) = \)</span> constant.  Finally, we need to normalize the result by dividing by the integral over <span class="math notranslate nohighlight">\(p\)</span>, such that
-$<span class="math notranslate nohighlight">\(P(p| n ) =  p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big) /(\int_0^1 dp p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big))\)</span>$</p>
+<p>Let’s say we have <span class="math notranslate nohighlight">\(N\)</span> total flips and get <span class="math notranslate nohighlight">\(n\)</span> heads.  The probably of finding <span class="math notranslate nohighlight">\(n\)</span> heads for a given <span class="math notranslate nohighlight">\(p\)</span> gives us the probabability of the data (the likelihood):</p>
+<div class="math notranslate nohighlight">
+\[P(D | H) = P(n | r) = p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big)\]</div>
+<p>where we have the binomial coefficient <span class="math notranslate nohighlight">\(\Big(\frac{N}{n} \Big)\)</span> which accounts for all the possible ways of getting <span class="math notranslate nohighlight">\(n\)</span> heads (e.g. if you get only <span class="math notranslate nohighlight">\(n=1\)</span>, it could have been on the first, second…,last flip of the coin).</p>
+<p>We have no idea what the probably of the different models is, so we will assume a flat distribution <span class="math notranslate nohighlight">\(P(p) = \)</span> constant.  Finally, we need to normalize the result by dividing by the integral over <span class="math notranslate nohighlight">\(p\)</span>, such that</p>
+<div class="math notranslate nohighlight">
+\[P(p| n ) =  p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big) /(\int_0^1 dp p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big))\]</div>
 <p>Let’s apply this to <span class="math notranslate nohighlight">\(N=1000\)</span> and <span class="math notranslate nohighlight">\(n=550\)</span>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -634,14 +639,17 @@ $<span class="math notranslate nohighlight">\(P(p| n ) =  p^n (1-p)^{N-n} \Big(\
 </section>
 <section id="gaussian-noise">
 <h2>Gaussian Noise<a class="headerlink" href="#gaussian-noise" title="Permalink to this headline">#</a></h2>
-<p>Now let us return to our previous discussion of data where we had a deterministic model for the signal and a random source of noise
-$<span class="math notranslate nohighlight">\( data(t)=S(t) + noise(t)\)</span><span class="math notranslate nohighlight">\( 
-The noise is drawn from a Gaussian distribution with a standard deviation \)</span>\sigma$.</p>
-<p>It is definitely easier to measure <span class="math notranslate nohighlight">\(S(t)\)</span> if we know what <span class="math notranslate nohighlight">\(\sigma\)</span> is ahead of time.  But how would we know this?  In many cases, we can simply make a measurement when we know there is no signal.  E.g. if you cover up a telescope, then the pictures you take are just the noise of your camera.  By doing this, we get <span class="math notranslate nohighlight">\(N\)</span> measurements drawn from a Gaussian distribution but we don’t know <span class="math notranslate nohighlight">\(\sigma\)</span>.  Now we can use our machinary of Bayesian inference to figure it out.  For each data point, <span class="math notranslate nohighlight">\(n_i\)</span>, the probability of the data, given a <span class="math notranslate nohighlight">\(\sigma\)</span> is
-$<span class="math notranslate nohighlight">\(P(n_i) =\frac{\Delta n}{\sqrt{2\pi}\sigma} e^{-n_i^2/(2\sigma^2)}\)</span><span class="math notranslate nohighlight">\( 
-where \)</span>\Delta n<span class="math notranslate nohighlight">\( is accuracy with which I measure the noise, i.e. it is the size of the bins in which we group \)</span>n_i$ since we are not measuring to infinite accuracy.</p>
-<p>Let’s assume we know thing about <span class="math notranslate nohighlight">\(\sigma\)</span> so that <span class="math notranslate nohighlight">\(P(\sigma) =\)</span> constant, since <span class="math notranslate nohighlight">\(P(D)\)</span> is also just some constant, we can worry about normalization our result later.  Putting this together, we have
-$<span class="math notranslate nohighlight">\( P(\sigma | n_i) = \prod_i P(n_i) = \frac{1}{(2\pi)^{N/2} \sigma^N} e^{-(\sum_i n_i^2)/(2\sigma^2)}\)</span>$</p>
+<p>Now let us return to our previous discussion of data where we had a deterministic model for the signal and a random source of noise</p>
+<div class="math notranslate nohighlight">
+\[ data(t)=S(t) + noise(t)\]</div>
+<p>The noise is drawn from a Gaussian distribution with a standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>It is definitely easier to measure <span class="math notranslate nohighlight">\(S(t)\)</span> if we know what <span class="math notranslate nohighlight">\(\sigma\)</span> is ahead of time.  But how would we know this?  In many cases, we can simply make a measurement when we know there is no signal.  E.g. if you cover up a telescope, then the pictures you take are just the noise of your camera.  By doing this, we get <span class="math notranslate nohighlight">\(N\)</span> measurements drawn from a Gaussian distribution but we don’t know <span class="math notranslate nohighlight">\(\sigma\)</span>.  Now we can use our machinary of Bayesian inference to figure it out.  For each data point, <span class="math notranslate nohighlight">\(n_i\)</span>, the probability of the data, given a <span class="math notranslate nohighlight">\(\sigma\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[P(n_i) =\frac{\Delta n}{\sqrt{2\pi}\sigma} e^{-n_i^2/(2\sigma^2)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta n\)</span> is accuracy with which I measure the noise, i.e. it is the size of the bins in which we group <span class="math notranslate nohighlight">\(n_i\)</span> since we are not measuring to infinite accuracy.</p>
+<p>Let’s assume we know thing about <span class="math notranslate nohighlight">\(\sigma\)</span> so that <span class="math notranslate nohighlight">\(P(\sigma) =\)</span> constant, since <span class="math notranslate nohighlight">\(P(D)\)</span> is also just some constant, we can worry about normalization our result later.  Putting this together, we have</p>
+<div class="math notranslate nohighlight">
+\[ P(\sigma | n_i) = \prod_i P(n_i) = \frac{1}{(2\pi)^{N/2} \sigma^N} e^{-(\sum_i n_i^2)/(2\sigma^2)}\]</div>
 <p>We learn wwo things: (1) we recall that <span class="math notranslate nohighlight">\(\sum_i n_i^2 \approx N \bar \sigma^2\)</span> where <span class="math notranslate nohighlight">\(\bar \sigma\)</span> is the true variance.  We can make a figure of this function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -663,7 +671,7 @@ $<span class="math notranslate nohighlight">\( P(\sigma | n_i) = \prod_i P(n_i) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12151f940&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x124a78c10&gt;]
 </pre></div>
 </div>
 <img alt="_images/Topic6a_Bayes_28_1.png" src="_images/Topic6a_Bayes_28_1.png" />
@@ -700,16 +708,16 @@ $<span class="math notranslate nohighlight">\( P(\sigma | n_i) = \prod_i P(n_i) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4.372129572567773e-32, 2.0662824425442126e-33)
-(1.8240521694799357e-31, 3.0056520286038797e-34)
-(6.250989872809787e-32, 2.3781059745672675e-33)
-(2.3631955935466617e-33, 3.654808244703056e-36)
-(1.2365112313922088e-30, 2.979037196263022e-31)
-(1.3125919282949607e-27, 9.950612044298351e-28)
-(1.912201515856392e-29, 2.1369011910323926e-32)
-(2.3060441467182898e-29, 5.507964964444194e-31)
-(7.168012629118421e-29, 4.51057372062073e-29)
-(1.4298236207569674e-27, 9.526810708751135e-28)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.9772318316118098e-30, 5.900949772304313e-31)
+(1.4589696220899085e-32, 6.025749243246302e-34)
+(2.465019166862211e-29, 9.975462411118002e-31)
+(1.2425032236165225e-31, 1.1492744057569535e-33)
+(3.141661152531215e-27, 3.882366580117792e-29)
+(5.138185559680873e-32, 2.253005235139706e-33)
+(3.2578282240532346e-33, 3.4912635409037696e-33)
+(1.106442479945211e-33, 2.8791215834606624e-36)
+(2.7465603647238282e-30, 8.719924432212726e-31)
+(6.075950448116499e-31, 7.722661607520039e-32)
 </pre></div>
 </div>
 <img alt="_images/Topic6a_Bayes_33_1.png" src="_images/Topic6a_Bayes_33_1.png" />
@@ -725,16 +733,16 @@ $<span class="math notranslate nohighlight">\( P(\sigma | n_i) = \prod_i P(n_i) 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.1907643168050416e-182, 3.4033535810970035e-182)
-(3.5656424577469174e-186, 6.896545388481329e-187)
-(8.627487939367348e-192, 1.2682130672888978e-191)
-(5.815698140530597e-184, 8.850725305998306e-184)
-(1.1751302652090763e-180, 1.8455065026865918e-180)
-(6.660622683601882e-185, 1.0293582155762576e-184)
-(9.228252870291996e-185, 1.4224449569031609e-184)
-(5.301077057635474e-189, 8.236403373858258e-189)
-(1.0346828820457025e-181, 1.6168927333812585e-181)
-(3.861957040420618e-188, 6.051188545138598e-188)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.4623648495548332e-191, 3.6465351583578427e-191)
+(1.527943779880697e-185, 2.381499738615619e-185)
+(3.991989845053263e-191, 5.942989582789744e-191)
+(1.2402218453034474e-182, 1.92145480639164e-182)
+(3.420085470345729e-188, 5.357036927008968e-188)
+(1.3087239730149391e-195, 1.6486479476206775e-195)
+(5.142358822344616e-181, 8.067020020518534e-181)
+(1.1646729635124476e-190, 1.7529557450772937e-190)
+(5.556106976329461e-178, 8.848993869639526e-178)
+(3.522721656511771e-186, 7.654819336488454e-187)
 </pre></div>
 </div>
 <img alt="_images/Topic6a_Bayes_34_1.png" src="_images/Topic6a_Bayes_34_1.png" />
@@ -768,11 +776,13 @@ $<span class="math notranslate nohighlight">\( P(\sigma | n_i) = \prod_i P(n_i) 
 <p>We again see that the width of these histograms scales as <span class="math notranslate nohighlight">\(1/\sqrt{N}\)</span>.</p>
 <section id="bayesian-inference-for-the-signal">
 <h3>Bayesian Inference for the Signal<a class="headerlink" href="#bayesian-inference-for-the-signal" title="Permalink to this headline">#</a></h3>
-<p>Taking enough data with no signal, we can determine <span class="math notranslate nohighlight">\(\sigma\)</span> to good enough accuracy that we will assume it is known.  This isn’t always true, but it simplifies how we think about measuring the signal.  We return again to our assumption, but now let’s make it clear that our hypothesis is only about the signal:
-$<span class="math notranslate nohighlight">\( data(t|H)=S(t|H) + noise(t)\)</span><span class="math notranslate nohighlight">\( 
-However, the only thing that is random is the noise, so the probability of the data is simply:
-\)</span><span class="math notranslate nohighlight">\(P(D|H) =\frac{1}{(2\pi)^{N/2} \sigma^N} e^{-(\sum_i (data(t_i) - S(t_i))^2/(2\sigma^2)}\)</span><span class="math notranslate nohighlight">\(
-This is literally just the same equation we had before since \)</span>data_i -S_i =n_i<span class="math notranslate nohighlight">\(.  However, now our posterior is for the parameters of our model, rather than \)</span>\sigma$.</p>
+<p>Taking enough data with no signal, we can determine <span class="math notranslate nohighlight">\(\sigma\)</span> to good enough accuracy that we will assume it is known.  This isn’t always true, but it simplifies how we think about measuring the signal.  We return again to our assumption, but now let’s make it clear that our hypothesis is only about the signal:</p>
+<div class="math notranslate nohighlight">
+\[ data(t|H)=S(t|H) + noise(t)\]</div>
+<p>However, the only thing that is random is the noise, so the probability of the data is simply:</p>
+<div class="math notranslate nohighlight">
+\[P(D|H) =\frac{1}{(2\pi)^{N/2} \sigma^N} e^{-(\sum_i (data(t_i) - S(t_i))^2/(2\sigma^2)}\]</div>
+<p>This is literally just the same equation we had before since <span class="math notranslate nohighlight">\(data_i -S_i =n_i\)</span>.  However, now our posterior is for the parameters of our model, rather than <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
 <p>Let’s see how this works for a line with noise:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -806,11 +816,14 @@ This is literally just the same equation we had before since \)</span>data_i -S_
 <img alt="_images/Topic6a_Bayes_43_0.png" src="_images/Topic6a_Bayes_43_0.png" />
 </div>
 </div>
-<p>We notice the very small size of the posterior here, because I didn’t bother to normal by dividing by <span class="math notranslate nohighlight">\(P(D)\)</span>. In practice, we we need to know about the postior is just the maximum likelihood point and <span class="math notranslate nohighlight">\(1\sigma\)</span>, <span class="math notranslate nohighlight">\(2\sigma\)</span>, <span class="math notranslate nohighlight">\(3\sigma\)</span> lines. However for this we don’t actually need to work with the full posterior.  Instead we can take the log:
-$<span class="math notranslate nohighlight">\(-2\log P(H,D) = \sum_i (data(t_i) - S(t_i))^2/(\sigma^2) +{\rm constant} \)</span><span class="math notranslate nohighlight">\(
-We see that minimizing \)</span>-\log P(H,D)<span class="math notranslate nohighlight">\( is exactly the same quantity we minimized in finding our best fit curves.  Now suppose that in the vacinity of the maximum likelihood point for a parameter of our model, \)</span>a<span class="math notranslate nohighlight">\( we have
-\)</span><span class="math notranslate nohighlight">\( -\log P(H,D) \approx -\frac{(a-a_{\rm min})^2}{2 \sigma_a^2}\)</span><span class="math notranslate nohighlight">\(
-Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate nohighlight">\( we have \)</span>-2\log P(H,D) = -2\log P(H,D)|<em>{a</em>{\rm min}}+ n^2$</p>
+<p>We notice the very small size of the posterior here, because I didn’t bother to normal by dividing by <span class="math notranslate nohighlight">\(P(D)\)</span>. In practice, we we need to know about the postior is just the maximum likelihood point and <span class="math notranslate nohighlight">\(1\sigma\)</span>, <span class="math notranslate nohighlight">\(2\sigma\)</span>, <span class="math notranslate nohighlight">\(3\sigma\)</span> lines. However for this we don’t actually
+need to work with the full posterior.  Instead we can take the log:</p>
+<div class="math notranslate nohighlight">
+\[-2\log P(H,D) = \sum_i (data(t_i) - S(t_i))^2/(\sigma^2) +{\rm constant} \]</div>
+<p>We see that minimizing <span class="math notranslate nohighlight">\(-\log P(H,D)\)</span> is exactly the same quantity we minimized in finding our best fit curves.  Now suppose that in the vacinity of the maximum likelihood point for a parameter of our model, <span class="math notranslate nohighlight">\(a\)</span> we have</p>
+<div class="math notranslate nohighlight">
+\[ -\log P(H,D) \approx -\frac{(a-a_{\rm min})^2}{2 \sigma_a^2}\]</div>
+<p>Then when <span class="math notranslate nohighlight">\(a = a_{\rm min} + n \sigma_a\)</span> we have <span class="math notranslate nohighlight">\(-2\log P(H,D) = -2\log P(H,D)|_{a_{\rm min}}+ n^2\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chi_line</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -850,16 +863,16 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 1095.9815489828575
- hess_inv: array([[1.49924966e-05]])
-      jac: array([3.05175781e-05])
-  message: &#39;Desired error not necessarily achieved due to precision loss.&#39;
-     nfev: 76
-      nit: 1
-     njev: 32
-   status: 2
-  success: False
-        x: array([0.06340272])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 962.7113508750148
+ hess_inv: array([[1.49924965e-05]])
+      jac: array([7.62939453e-06])
+  message: &#39;Optimization terminated successfully.&#39;
+     nfev: 30
+      nit: 2
+     njev: 15
+   status: 0
+  success: True
+        x: array([0.066442])
 </pre></div>
 </div>
 </div>
@@ -874,7 +887,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1095.9815489828575 1.0247796779601787e-238
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>962.7113508750148 8.910176863112389e-210
 </pre></div>
 </div>
 </div>
@@ -888,7 +901,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06887857997310061
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06096615168467038
 </pre></div>
 </div>
 </div>
@@ -901,7 +914,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0688785799740147
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.07191786250924656
 </pre></div>
 </div>
 </div>
@@ -915,7 +928,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0743544353853341
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.05549029627238202
 </pre></div>
 </div>
 </div>
@@ -928,7 +941,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.07435443538538289
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.07739371792153234
 </pre></div>
 </div>
 </div>
@@ -940,7 +953,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1095.9815489828575
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>962.7113508750148
 </pre></div>
 </div>
 </div>
@@ -978,8 +991,8 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.00547586] [0.00547586]
-[0.06340272]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.00547585] [0.00547586]
+[0.066442]
 </pre></div>
 </div>
 </div>
@@ -994,16 +1007,16 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> final_simplex: (array([[0.05030447, 0.08736517],
-       [0.05030455, 0.0873653 ],
-       [0.05030469, 0.08736423]]), array([1094.07051715, 1094.07051715, 1094.07051715]))
-           fun: 1094.0705171525187
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> final_simplex: (array([[0.06382864, 0.01743157],
+       [0.06382843, 0.01743235],
+       [0.06382857, 0.01743085]]), array([962.6352751, 962.6352751, 962.6352751]))
+           fun: 962.6352750973032
        message: &#39;Optimization terminated successfully.&#39;
-          nfev: 108
-           nit: 57
+          nfev: 83
+           nit: 43
         status: 0
        success: True
-             x: array([0.05030447, 0.08736517])
+             x: array([0.06382864, 0.01743157])
 </pre></div>
 </div>
 </div>
@@ -1038,7 +1051,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1094.0705171525187
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>962.6352750973032
 </pre></div>
 </div>
 </div>
@@ -1092,7 +1105,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1102.3795001843712
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>968.0231845387577
 </pre></div>
 </div>
 </div>
@@ -1113,7 +1126,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1215b87c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12465d550&gt;]
 </pre></div>
 </div>
 <img alt="_images/Topic6a_Bayes_77_1.png" src="_images/Topic6a_Bayes_77_1.png" />
@@ -1147,10 +1160,10 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06124070435465533
-0.06124070435456302
-0.07218762645743809
-0.07218762645767614
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.07477275865175875
+0.07477275865180118
+0.0857197322433224
+0.08571973224332423
 </pre></div>
 </div>
 </div>
@@ -1170,7 +1183,7 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1095.1389106871386, 1109.1389106871386)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(963.7051350296721, 977.7051350296721)
 </pre></div>
 </div>
 <img alt="_images/Topic6a_Bayes_81_1.png" src="_images/Topic6a_Bayes_81_1.png" />
@@ -1181,9 +1194,10 @@ Then when \)</span>a = a_{\rm min} + n \sigma_a<span class="math notranslate noh
 <section id="generalizations">
 <h2>Generalizations<a class="headerlink" href="#generalizations" title="Permalink to this headline">#</a></h2>
 <p><strong>Priors</strong> Notice that the marginalized likelihood is much wider than the one where <span class="math notranslate nohighlight">\(b=0\)</span>.  This makes sense, because forcing <span class="math notranslate nohighlight">\(b=0\)</span> is some kind of extra knowledge we used.</p>
-<p>We can make sense of this using the idea of a prior, <span class="math notranslate nohighlight">\(P(H)\)</span>.  Specifically, the two extremes we have considered are just limits of the prior
-$<span class="math notranslate nohighlight">\(P(b) =\frac{1}{\sqrt{2\pi \sigma_b^2}} e^{-b^2/(2 \sigma_b^2)} \)</span><span class="math notranslate nohighlight">\(
-When \)</span>\sigma_b \to 0<span class="math notranslate nohighlight">\(, we recover the case where \)</span>b=0<span class="math notranslate nohighlight">\( and when \)</span>\sigma_b \to \infty<span class="math notranslate nohighlight">\( we recover a flat prior on \)</span>b$.</p>
+<p>We can make sense of this using the idea of a prior, <span class="math notranslate nohighlight">\(P(H)\)</span>.  Specifically, the two extremes we have considered are just limits of the prior</p>
+<div class="math notranslate nohighlight">
+\[P(b) =\frac{1}{\sqrt{2\pi \sigma_b^2}} e^{-b^2/(2 \sigma_b^2)} \]</div>
+<p>When <span class="math notranslate nohighlight">\(\sigma_b \to 0\)</span>, we recover the case where <span class="math notranslate nohighlight">\(b=0\)</span> and when <span class="math notranslate nohighlight">\(\sigma_b \to \infty\)</span> we recover a flat prior on <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chi_marg_prior</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">t</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">sb</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
@@ -1257,7 +1271,7 @@ When \)</span>\sigma_b \to 0<span class="math notranslate nohighlight">\(, we re
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>986.8217987942159
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>960.7527714706566
 </pre></div>
 </div>
 </div>
@@ -1293,7 +1307,7 @@ When \)</span>\sigma_b \to 0<span class="math notranslate nohighlight">\(, we re
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0.07166517, -0.00599876]), array([ 0.06788174, -0.00249711]))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([ 0.08267493, -0.05158584]), array([7.05692100e-02, 9.27734236e-05]))
 </pre></div>
 </div>
 </div>

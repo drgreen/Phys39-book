@@ -15,7 +15,9 @@ import matplotlib.pyplot as plt
 # A good way understand errors and apply them effectively is to think like a Bayesian.  The reason is that it puts you and your hypotheses right in the middle of the action so that you can see how your choices matter.
 
 # To get us started, this is Bayes' Theorem:
+# 
 # $$P(H | D) = P(H) P(D|H) / P(D)$$
+# 
 # Where $P(H|D)$ is the probability of the Hypothesis ($H$) given the data ($D$) and vise versa for $P(D|H)$, and $P(H)$ ($P(D)$) is the probability of the hypothesis (data).
 # 
 # I always find this very hard to understand.  There are a bunch of variables I don't know what they mean.  So, let's think about a simple example:  
@@ -31,9 +33,13 @@ import matplotlib.pyplot as plt
 # Notice that if if the eye witness is perfect ($P(D|H) = 1$), our answer is 1, as it should be.
 
 # The probability of the data, $P(D)$, doesn't actually depend on the hypothesis: it is a sum over all possibilities.  Its role in life is just to make the probability normalized to one.  To see this, we note that the only two options are that you got hit by a blue taxi or a green taxi.  If we were to now ask "what is the probability you were hit by a green taxi?", we would have to change $𝑃(𝐷|𝐻)=0.2$ (there is only a 20\% chance that the witness would think it was blue if it was really green) but the probability of the hypothesis itself should $P(H) = 0.85$ since 85\% of taxis are green.  But the probability of the data stays the same, since we already enumated all the possibilities.  This means that
+# 
 # $$P(H={\rm Green}|D) = \frac{0.2 \times 0.85}{0.15 \times 0.8 + 0.85 \times 0.2} \sim 0.59$$
+# 
 # Notice that now 
+# 
 # $$P(H={\rm Green}|D) + P(H={\rm Blue}|D) = 1$$
+# 
 # This is really what Bayes' theorem is all about: one of the hypotheses must be true, so if $P(H|D)$ is really a probability, then it must add to up one when we sum over all the possibility.  Bayes' theorem is just reminding us how to do that.
 
 # ## Application: coin flipping
@@ -68,10 +74,13 @@ heads.max()
 # Getting 550 heads is possible but very unlikely when $p=1/2$ (a fair coin).  Instead, let's apply the machinary of Bayes:
 
 # Let's say we have $N$ total flips and get $n$ heads.  The probably of finding $n$ heads for a given $p$ gives us the probabability of the data (the likelihood):
+# 
 # $$P(D | H) = P(n | r) = p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big)$$
+# 
 # where we have the binomial coefficient $\Big(\frac{N}{n} \Big)$ which accounts for all the possible ways of getting $n$ heads (e.g. if you get only $n=1$, it could have been on the first, second...,last flip of the coin).
 # 
 # We have no idea what the probably of the different models is, so we will assume a flat distribution $P(p) = $ constant.  Finally, we need to normalize the result by dividing by the integral over $p$, such that
+# 
 # $$P(p| n ) =  p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big) /(\int_0^1 dp p^n (1-p)^{N-n} \Big(\frac{N}{n} \Big))$$
 # 
 
@@ -131,14 +140,19 @@ ax.set_xlim(0.5,0.6)
 # ## Gaussian Noise
 
 # Now let us return to our previous discussion of data where we had a deterministic model for the signal and a random source of noise 
+# 
 # $$ data(t)=S(t) + noise(t)$$ 
+# 
 # The noise is drawn from a Gaussian distribution with a standard deviation $\sigma$. 
 # 
 # It is definitely easier to measure $S(t)$ if we know what $\sigma$ is ahead of time.  But how would we know this?  In many cases, we can simply make a measurement when we know there is no signal.  E.g. if you cover up a telescope, then the pictures you take are just the noise of your camera.  By doing this, we get $N$ measurements drawn from a Gaussian distribution but we don't know $\sigma$.  Now we can use our machinary of Bayesian inference to figure it out.  For each data point, $n_i$, the probability of the data, given a $\sigma$ is 
+# 
 # $$P(n_i) =\frac{\Delta n}{\sqrt{2\pi}\sigma} e^{-n_i^2/(2\sigma^2)}$$ 
+# 
 # where $\Delta n$ is accuracy with which I measure the noise, i.e. it is the size of the bins in which we group $n_i$ since we are not measuring to infinite accuracy.
 # 
 # Let's assume we know thing about $\sigma$ so that $P(\sigma) =$ constant, since $P(D)$ is also just some constant, we can worry about normalization our result later.  Putting this together, we have
+# 
 # $$ P(\sigma | n_i) = \prod_i P(n_i) = \frac{1}{(2\pi)^{N/2} \sigma^N} e^{-(\sum_i n_i^2)/(2\sigma^2)}$$
 
 # We learn wwo things: (1) we recall that $\sum_i n_i^2 \approx N \bar \sigma^2$ where $\bar \sigma$ is the true variance.  We can make a figure of this function:
@@ -227,9 +241,13 @@ plt.show()
 # ### Bayesian Inference for the Signal
 
 # Taking enough data with no signal, we can determine $\sigma$ to good enough accuracy that we will assume it is known.  This isn't always true, but it simplifies how we think about measuring the signal.  We return again to our assumption, but now let's make it clear that our hypothesis is only about the signal:
+# 
 # $$ data(t|H)=S(t|H) + noise(t)$$ 
+# 
 # However, the only thing that is random is the noise, so the probability of the data is simply:
+# 
 # $$P(D|H) =\frac{1}{(2\pi)^{N/2} \sigma^N} e^{-(\sum_i (data(t_i) - S(t_i))^2/(2\sigma^2)}$$
+# 
 # This is literally just the same equation we had before since $data_i -S_i =n_i$.  However, now our posterior is for the parameters of our model, rather than $\sigma$.
 
 # Let's see how this works for a line with noise:
@@ -260,10 +278,15 @@ plt.plot(a_r,Pos_r)
 plt.show()
 
 
-# We notice the very small size of the posterior here, because I didn't bother to normal by dividing by $P(D)$. In practice, we we need to know about the postior is just the maximum likelihood point and $1\sigma$, $2\sigma$, $3\sigma$ lines. However for this we don't actually need to work with the full posterior.  Instead we can take the log: 
+# We notice the very small size of the posterior here, because I didn't bother to normal by dividing by $P(D)$. In practice, we we need to know about the postior is just the maximum likelihood point and $1\sigma$, $2\sigma$, $3\sigma$ lines. However for this we don't actually
+# need to work with the full posterior.  Instead we can take the log: 
+# 
 # $$-2\log P(H,D) = \sum_i (data(t_i) - S(t_i))^2/(\sigma^2) +{\rm constant} $$
+# 
 # We see that minimizing $-\log P(H,D)$ is exactly the same quantity we minimized in finding our best fit curves.  Now suppose that in the vacinity of the maximum likelihood point for a parameter of our model, $a$ we have
+# 
 # $$ -\log P(H,D) \approx -\frac{(a-a_{\rm min})^2}{2 \sigma_a^2}$$
+# 
 # Then when $a = a_{\rm min} + n \sigma_a$ we have $-2\log P(H,D) = -2\log P(H,D)|_{a_{\rm min}}+ n^2$
 
 # In[21]:
@@ -516,7 +539,9 @@ ax.set_ylim(chi_min_marg-4,chi_min_marg+10)
 # **Priors** Notice that the marginalized likelihood is much wider than the one where $b=0$.  This makes sense, because forcing $b=0$ is some kind of extra knowledge we used. 
 # 
 # We can make sense of this using the idea of a prior, $P(H)$.  Specifically, the two extremes we have considered are just limits of the prior 
+# 
 # $$P(b) =\frac{1}{\sqrt{2\pi \sigma_b^2}} e^{-b^2/(2 \sigma_b^2)} $$
+# 
 # When $\sigma_b \to 0$, we recover the case where $b=0$ and when $\sigma_b \to \infty$ we recover a flat prior on $b$.  
 # 
 

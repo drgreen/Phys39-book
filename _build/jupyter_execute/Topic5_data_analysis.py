@@ -85,7 +85,9 @@ plt.show()
 
 # ### Signal and Noise
 
-# The central idea in most basic analyses is that our data can be thought of as the sum of two pieces $${\rm data} = {\rm signal}+{\rm noise}$$
+# The central idea in most basic analyses is that our data can be thought of as the sum of two pieces 
+# 
+# ${\rm data} = {\rm signal}+{\rm noise}$
 # 
 # The **signal** is typically deterministic: in this case, it is some specific function of time that we are trying to measure.
 # 
@@ -170,10 +172,14 @@ ax_h.hist(noS_Llist,bins=20)
 plt.show()
 
 
-# Now suppose we want to measure the value of $S$ in our data.  Suppose the true value of $S$ is $S_0$.  Let's just try to guess a value of $S$ and calculate 
-# $$ \sum ({\rm data}-S)^2 = \sum (S_0+{\rm noise} - S)^2$$
+# Now suppose we want to measure the value of $S$ in our data.  Suppose the true value of $S$ is $S_0$.  Let's just try to guess a value of $S$ and calculate
+# 
+# $ \sum ({\rm data}-S)^2 = \sum (S_0+{\rm noise} - S)^2$
+# 
 # Now notice that the sum over $N$ is just $N$ times the average, so as we take $N$ to be large, this is just $N$ times the statistical average.  This is useful because we know the statistical properties of the noise:
-# $$\sum (S_0+{\rm noise} - S)^2 = N(S_0-S)^2 + N \sigma^2$$
+# 
+# $\sum (S_0+{\rm noise} - S)^2 = N(S_0-S)^2 + N \sigma^2$
+# 
 # Notice that this is the sum of two positive terms and the answer is minimized when $S=S_0$.
 
 # So let's see how accurate a measure of $S$ we can make by just minimizing this quantity.  I happen to know that the noise has $\sigma=1$ so this quantity is equivalent to $\chi^2$ (otherwise it would be $\sigma^2 \times \chi^2$).
@@ -243,7 +249,14 @@ slope2, intercept2, r_value2, p_value2, std_err2 = stats.linregress(t,d2)
 slope3, intercept3, r_value3, p_value3, std_err3 = stats.linregress(t,d3)
 
 
-# What most such algorithms are doing is the same as what we did above, but now where we assume that $${\rm data} = a t + b + {\rm noise}$$ where $t$ is time, $a$ and $b$ are constants.  Following what we did before, you guess that if you calculate  $$\sum ({\rm data}-a t - b)^2$$
+# What most such algorithms are doing is the same as what we did above, but now where we assume that 
+# 
+# ${\rm data} = a t + b + {\rm noise}$
+# 
+# where $t$ is time, $a$ and $b$ are constants.  Following what we did before, you guess that if you calculate 
+# 
+# $\sum ({\rm data}-a t - b)^2$
+# 
 # you can minimize with respect to $a$ and $b$ to find your "best fit" line.
 
 # In[22]:
@@ -341,7 +354,11 @@ plt.scatter(t,d3)
 
 # ## More general $\chi^2$ minimization
 
-# We can now see that pattern for finding a set of best fit parameters for any model given the data. Suppose with think our signal is described by a model $S(t; \vec X)$ where $\vec X$ is a list of parameters decribing the model.  Now we caculate $$ \sum (data-S(t;\vec X))^2$$ and we find the minimum in terms of the components of $X$.  
+# We can now see that pattern for finding a set of best fit parameters for any model given the data. Suppose with think our signal is described by a model $S(t; \vec X)$ where $\vec X$ is a list of parameters decribing the model.  Now we caculate 
+# 
+# $ \sum (data-S(t;\vec X))^2$
+# 
+# and we find the minimum in terms of the components of $X$.  
 # 
 # For example, we can add allow our data to be modelled by a parabola instead of just a line as follows:
 

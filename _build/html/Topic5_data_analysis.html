@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Topic0_Intro.html">
-   Physics 39: Scientific Computing with Python
+   Topic 0: Introduction
   </a>
  </li>
  <li class="toctree-l1">
@@ -784,7 +784,8 @@ words separated
 <p>We have successfully loaded our data and made a quick plot to see that it makes sense.  It certainly looks like some data, but what do we do with it?</p>
 <section id="signal-and-noise">
 <h2>Signal and Noise<a class="headerlink" href="#signal-and-noise" title="Permalink to this headline">#</a></h2>
-<p>The central idea in most basic analyses is that our data can be thought of as the sum of two pieces $<span class="math notranslate nohighlight">\({\rm data} = {\rm signal}+{\rm noise}\)</span>$</p>
+<p>The central idea in most basic analyses is that our data can be thought of as the sum of two pieces</p>
+<p><span class="math notranslate nohighlight">\({\rm data} = {\rm signal}+{\rm noise}\)</span></p>
 <p>The <strong>signal</strong> is typically deterministic: in this case, it is some specific function of time that we are trying to measure.</p>
 <p>The <strong>noise</strong> is random: it is usually assumed to be uncorrelated between bins and drawn from a Gaussian with zero mean.  I.e. it is a random number drawn from a distribution that is added to our answer, but whose average is zero.</p>
 <p>To see why this is important, let us assume that our signal is just a constant: <span class="math notranslate nohighlight">\({\rm signal}(t) = S\)</span> and our noise is drawn from a Gaussian distribution with variance <span class="math notranslate nohighlight">\(\sigma\)</span>.  Suppose our data is composed of <span class="math notranslate nohighlight">\(N\)</span> measurements.  What we notice is that is we write
@@ -809,7 +810,7 @@ The right hand side is a random walk just like we did earlier in the course. We 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11ca38940&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x119ce45e0&gt;]
 </pre></div>
 </div>
 <img alt="_images/Topic5_data_analysis_19_1.png" src="_images/Topic5_data_analysis_19_1.png" />
@@ -822,7 +823,7 @@ The right hand side is a random walk just like we did earlier in the course. We 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(41.03491856407199, 11.906326368753495)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(130.10719365738598, 29.400606056747208)
 </pre></div>
 </div>
 </div>
@@ -863,7 +864,7 @@ The right hand side is a random walk just like we did earlier in the course. We 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11cf30a00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11a1e1b50&gt;]
 </pre></div>
 </div>
 <img alt="_images/Topic5_data_analysis_25_1.png" src="_images/Topic5_data_analysis_25_1.png" />
@@ -893,11 +894,11 @@ The right hand side is a random walk just like we did earlier in the course. We 
 <img alt="_images/Topic5_data_analysis_27_0.png" src="_images/Topic5_data_analysis_27_0.png" />
 </div>
 </div>
-<p>Now suppose we want to measure the value of <span class="math notranslate nohighlight">\(S\)</span> in our data.  Suppose the true value of <span class="math notranslate nohighlight">\(S\)</span> is <span class="math notranslate nohighlight">\(S_0\)</span>.  Let’s just try to guess a value of <span class="math notranslate nohighlight">\(S\)</span> and calculate
-$<span class="math notranslate nohighlight">\( \sum ({\rm data}-S)^2 = \sum (S_0+{\rm noise} - S)^2\)</span><span class="math notranslate nohighlight">\(
-Now notice that the sum over \)</span>N<span class="math notranslate nohighlight">\( is just \)</span>N<span class="math notranslate nohighlight">\( times the average, so as we take \)</span>N<span class="math notranslate nohighlight">\( to be large, this is just \)</span>N<span class="math notranslate nohighlight">\( times the statistical average.  This is useful because we know the statistical properties of the noise:
-\)</span><span class="math notranslate nohighlight">\(\sum (S_0+{\rm noise} - S)^2 = N(S_0-S)^2 + N \sigma^2\)</span><span class="math notranslate nohighlight">\(
-Notice that this is the sum of two positive terms and the answer is minimized when \)</span>S=S_0$.</p>
+<p>Now suppose we want to measure the value of <span class="math notranslate nohighlight">\(S\)</span> in our data.  Suppose the true value of <span class="math notranslate nohighlight">\(S\)</span> is <span class="math notranslate nohighlight">\(S_0\)</span>.  Let’s just try to guess a value of <span class="math notranslate nohighlight">\(S\)</span> and calculate</p>
+<p><span class="math notranslate nohighlight">\( \sum ({\rm data}-S)^2 = \sum (S_0+{\rm noise} - S)^2\)</span></p>
+<p>Now notice that the sum over <span class="math notranslate nohighlight">\(N\)</span> is just <span class="math notranslate nohighlight">\(N\)</span> times the average, so as we take <span class="math notranslate nohighlight">\(N\)</span> to be large, this is just <span class="math notranslate nohighlight">\(N\)</span> times the statistical average.  This is useful because we know the statistical properties of the noise:</p>
+<p><span class="math notranslate nohighlight">\(\sum (S_0+{\rm noise} - S)^2 = N(S_0-S)^2 + N \sigma^2\)</span></p>
+<p>Notice that this is the sum of two positive terms and the answer is minimized when <span class="math notranslate nohighlight">\(S=S_0\)</span>.</p>
 <p>So let’s see how accurate a measure of <span class="math notranslate nohighlight">\(S\)</span> we can make by just minimizing this quantity.  I happen to know that the noise has <span class="math notranslate nohighlight">\(\sigma=1\)</span> so this quantity is equivalent to <span class="math notranslate nohighlight">\(\chi^2\)</span> (otherwise it would be <span class="math notranslate nohighlight">\(\sigma^2 \times \chi^2\)</span>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -919,7 +920,7 @@ Notice that this is the sum of two positive terms and the answer is minimized wh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11d9410a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11ab65160&gt;]
 </pre></div>
 </div>
 <img alt="_images/Topic5_data_analysis_31_1.png" src="_images/Topic5_data_analysis_31_1.png" />
@@ -940,16 +941,16 @@ Notice that this is the sum of two positive terms and the answer is minimized wh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 9830.351245723461
- hess_inv: array([[4.99999985e-05]])
-      jac: array([0.])
-  message: &#39;Optimization terminated successfully.&#39;
-     nfev: 12
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 10192.994862259602
+ hess_inv: array([[1.32507178e-05]])
+      jac: array([0.00012207])
+  message: &#39;Desired error not necessarily achieved due to precision loss.&#39;
+     nfev: 10
       nit: 2
-     njev: 6
-   status: 0
-  success: True
-        x: array([0.0917362])
+     njev: 5
+   status: 2
+  success: False
+        x: array([0.09375115])
 </pre></div>
 </div>
 </div>
@@ -962,8 +963,8 @@ Notice that this is the sum of two positive terms and the answer is minimized wh
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 9876.896360046529
- hess_inv: array([[4.99999995e-05]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 9951.489423144052
+ hess_inv: array([[5.e-05]])
       jac: array([0.])
   message: &#39;Optimization terminated successfully.&#39;
      nfev: 8
@@ -971,7 +972,7 @@ Notice that this is the sum of two positive terms and the answer is minimized wh
      njev: 4
    status: 0
   success: True
-        x: array([-0.00108754])
+        x: array([0.01305158])
 </pre></div>
 </div>
 </div>
@@ -1009,8 +1010,11 @@ Notice that this is the sum of two positive terms and the answer is minimized wh
 </div>
 </div>
 </div>
-<p>What most such algorithms are doing is the same as what we did above, but now where we assume that $<span class="math notranslate nohighlight">\({\rm data} = a t + b + {\rm noise}\)</span><span class="math notranslate nohighlight">\( where \)</span>t<span class="math notranslate nohighlight">\( is time, \)</span>a<span class="math notranslate nohighlight">\( and \)</span>b<span class="math notranslate nohighlight">\( are constants.  Following what we did before, you guess that if you calculate  \)</span><span class="math notranslate nohighlight">\(\sum ({\rm data}-a t - b)^2\)</span><span class="math notranslate nohighlight">\(
-you can minimize with respect to \)</span>a<span class="math notranslate nohighlight">\( and \)</span>b$ to find your “best fit” line.</p>
+<p>What most such algorithms are doing is the same as what we did above, but now where we assume that</p>
+<p><span class="math notranslate nohighlight">\({\rm data} = a t + b + {\rm noise}\)</span></p>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> is time, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are constants.  Following what we did before, you guess that if you calculate</p>
+<p><span class="math notranslate nohighlight">\(\sum ({\rm data}-a t - b)^2\)</span></p>
+<p>you can minimize with respect to <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> to find your “best fit” line.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">minimize</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:((</span><span class="n">data_ref2</span><span class="o">-</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span><span class="mf">0.4</span><span class="p">)</span>
@@ -1018,8 +1022,8 @@ you can minimize with respect to \)</span>a<span class="math notranslate nohighl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 9876.896360046529
- hess_inv: array([[4.99999995e-05]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      fun: 9951.489423144052
+ hess_inv: array([[5.e-05]])
       jac: array([0.])
   message: &#39;Optimization terminated successfully.&#39;
      nfev: 8
@@ -1027,7 +1031,7 @@ you can minimize with respect to \)</span>a<span class="math notranslate nohighl
      njev: 4
    status: 0
   success: True
-        x: array([-0.00108754])
+        x: array([0.01305158])
 </pre></div>
 </div>
 </div>
@@ -1163,7 +1167,7 @@ you can minimize with respect to \)</span>a<span class="math notranslate nohighl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x11cc6ab80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x119b10dc0&gt;
 </pre></div>
 </div>
 <img alt="_images/Topic5_data_analysis_56_1.png" src="_images/Topic5_data_analysis_56_1.png" />
@@ -1184,7 +1188,9 @@ you can minimize with respect to \)</span>a<span class="math notranslate nohighl
 </section>
 <section id="more-general-chi-2-minimization">
 <h2>More general <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization<a class="headerlink" href="#more-general-chi-2-minimization" title="Permalink to this headline">#</a></h2>
-<p>We can now see that pattern for finding a set of best fit parameters for any model given the data. Suppose with think our signal is described by a model <span class="math notranslate nohighlight">\(S(t; \vec X)\)</span> where <span class="math notranslate nohighlight">\(\vec X\)</span> is a list of parameters decribing the model.  Now we caculate $<span class="math notranslate nohighlight">\( \sum (data-S(t;\vec X))^2\)</span><span class="math notranslate nohighlight">\( and we find the minimum in terms of the components of \)</span>X$.</p>
+<p>We can now see that pattern for finding a set of best fit parameters for any model given the data. Suppose with think our signal is described by a model <span class="math notranslate nohighlight">\(S(t; \vec X)\)</span> where <span class="math notranslate nohighlight">\(\vec X\)</span> is a list of parameters decribing the model.  Now we caculate</p>
+<p><span class="math notranslate nohighlight">\( \sum (data-S(t;\vec X))^2\)</span></p>
+<p>and we find the minimum in terms of the components of <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>For example, we can add allow our data to be modelled by a parabola instead of just a line as follows:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1239,7 +1245,7 @@ you can minimize with respect to \)</span>a<span class="math notranslate nohighl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x120b42730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x11df7e2b0&gt;
 </pre></div>
 </div>
 <img alt="_images/Topic5_data_analysis_65_1.png" src="_images/Topic5_data_analysis_65_1.png" />
@@ -1303,26 +1309,31 @@ you can minimize with respect to \)</span>a<span class="math notranslate nohighl
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.64421425, -0.94280955,  0.17552338, -0.76185134, -1.92283626,
-        0.15274356, -1.28106678, -0.24460933,  0.46297835, -0.01612456,
-        3.23858068, -0.77511113,  0.58690979, -0.59183832,  0.11363018,
-        1.64970108, -0.14953987,  0.25138607,  0.48511996, -0.07291284,
-        0.69550834,  0.11032755, -0.58965046, -1.40622838, -0.09002186,
-       -0.82792169,  0.91178239,  1.57051659, -1.36141863, -0.04108879,
-        1.08238078, -0.68715638,  1.52940677, -1.3996188 , -0.21851475,
-       -0.37438234, -0.98623821,  0.14274475, -0.86492643, -0.60741827,
-       -1.44437516,  0.66395177, -0.68647791,  0.26526795, -0.40862929,
-        0.14946222, -0.37103181, -2.78914991,  0.18645266, -1.02955159,
-       -0.60541851,  0.17000748, -3.03044717,  0.25336554,  0.33004207,
-       -0.47326527,  2.22560189,  1.13395065, -0.39208759,  0.25140859,
-       -0.48509116,  1.35997325, -1.73745785, -0.37312144,  0.88687415,
-       -1.87456503, -0.42021939, -1.57316976,  1.11481174,  0.88439388,
-        2.1372756 ,  0.23770291,  0.47836545,  1.4742096 ,  0.61433685,
-        0.44162152, -0.82174601, -0.19416902, -0.8932212 , -1.13971496,
-       -0.18316276, -0.52125878,  0.65506039,  0.35681416,  1.51388214,
-       -0.57706752,  1.23372312, -1.79930137, -0.97762202,  0.22572108,
-        2.26277666,  0.40151248, -1.58125626, -0.0561098 ,  0.44995276,
-       -1.06551865, -0.39561383,  0.32759086,  1.24442859,  1.36970076])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2.18066855e-01,  6.81363096e-01,  1.50365211e+00, -2.37433590e-01,
+       -1.47250604e+00, -1.38024553e-01,  1.42601539e-01, -1.25445736e-01,
+       -1.91803101e-01,  1.18814606e+00, -6.57773592e-01,  3.05688957e-01,
+        1.33621127e+00, -2.52876104e+00, -5.39773530e-01, -8.99736563e-01,
+        7.47054159e-01, -6.89449358e-01,  9.56189847e-02,  2.66292578e+00,
+       -1.50344143e+00,  3.43407359e-01, -2.79859465e-01,  1.23235657e+00,
+       -6.37821845e-01,  1.29806123e+00, -1.08391257e-03,  1.49932892e-01,
+        6.73576463e-01, -4.16760199e-01, -1.58721567e+00, -2.12869273e+00,
+        7.82318171e-01,  6.04968025e-02, -6.44481389e-01, -3.47925843e-01,
+        1.11113673e+00,  4.87647255e-01, -7.46142074e-01, -1.81408641e+00,
+       -6.20179013e-01, -1.91172947e+00,  2.14252877e-02, -1.23278129e+00,
+       -3.96539443e-01,  8.16497807e-02, -1.22007830e-01, -1.28020464e+00,
+        7.14807082e-03, -2.58096672e-01,  6.50741807e-01,  4.24963583e-01,
+       -1.60728146e+00, -5.29992848e-01,  9.01145673e-01, -3.22541871e-01,
+        4.44312762e-01, -1.21264883e+00, -1.86457926e-01, -9.03679374e-01,
+       -9.85147378e-02,  3.86307528e-03, -6.30038901e-01,  7.59365365e-01,
+        1.26302175e+00,  6.81821537e-01,  1.36656971e+00, -2.19540029e+00,
+        1.47152282e+00,  1.94993392e+00,  4.13096811e-01, -8.68946642e-01,
+       -4.31682933e-01,  3.90702087e-01, -1.21751508e+00, -2.97026151e-01,
+       -1.32054845e+00,  8.52185271e-02, -1.18374329e+00, -5.87864047e-01,
+        2.32895009e-01,  9.94002436e-01,  1.93021376e+00,  1.35646008e-01,
+       -1.91807686e-03, -9.75260951e-01, -1.51883216e+00, -5.96426413e-01,
+        1.57621368e+00, -6.63118108e-02, -1.66668051e+00, -1.84721980e+00,
+       -8.40561800e-02,  1.54372723e+00,  3.82304709e-01,  1.72699323e+00,
+        1.65520688e+00, -9.99340903e-01, -6.39079302e-01, -1.45894179e-01])
 </pre></div>
 </div>
 </div>

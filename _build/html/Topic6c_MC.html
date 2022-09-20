@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Topic0_Intro.html">
-   Physics 39: Scientific Computing with Python
+   Topic 0: Introduction
   </a>
  </li>
  <li class="toctree-l1">
@@ -478,9 +478,10 @@ title="Print to PDF"
 <h2>Monte Carlo Integration<a class="headerlink" href="#monte-carlo-integration" title="Permalink to this headline">#</a></h2>
 <p>The problem of dealing with high dimensional spaces is common to all kinds of situations, from machine learning to basic integration. We haven’t encountered this problem directly so far because we have been using small numbers of parameters.  In discussing Bayesian inference, we were mostly talking about 1 ro 2 parameters at a time. But we saw in the case of solve differential equations with machine learning how quickly the number of parameters would grow. Our intuition for how do deal with such high dimensional spaces is generally quite bad.</p>
 <p>Recall that one task we might want to perform on in this parameter space is integration.  Concretely, I need to integrate over some parameters to marginalize over their uncertainty.  While easy to state, numerically integrating in high dimensional spaces is very difficult and is a window in the broader challenges one can encounter.</p>
-<p>To see the problem, let’s remember that the volume of a d-dimensional ball of radius 1 is
-$<span class="math notranslate nohighlight">\( V_d = \frac{\pi^{d/2}}{ \Gamma[\frac{d}{2}+1]}\)</span><span class="math notranslate nohighlight">\(
-However, if we stick this sphere inside a d-dimensional box where the sphere touches the edges, so that each length of the box is the diameter, 2, then the volume of the enclosing box is \)</span>2^d$</p>
+<p>To see the problem, let’s remember that the volume of a d-dimensional ball of radius 1 is</p>
+<div class="math notranslate nohighlight">
+\[ V_d = \frac{\pi^{d/2}}{ \Gamma[\frac{d}{2}+1]}\]</div>
+<p>However, if we stick this sphere inside a d-dimensional box where the sphere touches the edges, so that each length of the box is the diameter, 2, then the volume of the enclosing box is <span class="math notranslate nohighlight">\(2^d\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dlist</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -608,7 +609,7 @@ However, if we stick this sphere inside a d-dimensional box where the sphere tou
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.016691923141479492
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.015557289123535156
 </pre></div>
 </div>
 </div>
@@ -623,7 +624,7 @@ However, if we stick this sphere inside a d-dimensional box where the sphere tou
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3253629207611084
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3195807933807373
 </pre></div>
 </div>
 </div>
@@ -638,7 +639,7 @@ However, if we stick this sphere inside a d-dimensional box where the sphere tou
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.078979253768921
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7.022588014602661
 </pre></div>
 </div>
 </div>
@@ -680,16 +681,16 @@ However, if we stick this sphere inside a d-dimensional box where the sphere tou
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.746551752090454
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.5220389366149902
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.8890328407287598
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.7336981296539307
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.1491100788116455
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.9011383056640625
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.379343748092651
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.058867931365967
 </pre></div>
 </div>
 </div>
@@ -718,11 +719,12 @@ However, if we stick this sphere inside a d-dimensional box where the sphere tou
 <p>Of course, what we are really enountering is the idea random numbers can’t solve the volume problem if we are drawing from a uniform distribution.  Instead, we should be tailoring how to draw the random numbers to the problem we are trying to solve.</p>
 <p>We are going to try a very basic technique called importance sampling. This will give us some intuition but will miss out of some of the complexity of more powerful tools.</p>
 <p>However, the key idea that is common to all of them is that we have a probability distribution that allows us to increase the chance of finding the most important parts of parameter space.  In advanced techniques, this probabilty adjust to the function itself, allowing it to find the highest points more easily.  Here is will simply choose one and see how to tell when we’ve made a good choice.</p>
-<p>Importance sampling is the generalization of the above when we don’t pick a uniform distribution.  Suppose instead that a pick points from a  distribution <span class="math notranslate nohighlight">\(p(x)\)</span> and I want to compute <span class="math notranslate nohighlight">\(\int d^d x q(\vec x) p(\vec x) = \langle q(\vec x) \rangle\)</span>.  Now if we define <span class="math notranslate nohighlight">\(q(\vec x) = f(\vec x) / p(\vec x)\)</span> this is also equivalent to <span class="math notranslate nohighlight">\(\int d^d x f(\vec x) \equiv Q\)</span>.  Now we draw from the distribution <span class="math notranslate nohighlight">\(p(\vec x)\)</span> we get
-$<span class="math notranslate nohighlight">\(
+<p>Importance sampling is the generalization of the above when we don’t pick a uniform distribution.  Suppose instead that a pick points from a  distribution <span class="math notranslate nohighlight">\(p(x)\)</span> and I want to compute <span class="math notranslate nohighlight">\(\int d^d x q(\vec x) p(\vec x) = \langle q(\vec x) \rangle\)</span>.  Now if we define <span class="math notranslate nohighlight">\(q(\vec x) = f(\vec x) / p(\vec x)\)</span> this is also equivalent to <span class="math notranslate nohighlight">\(\int d^d x f(\vec x) \equiv Q\)</span>.  Now we draw from the distribution <span class="math notranslate nohighlight">\(p(\vec x)\)</span> we get</p>
+<div class="math notranslate nohighlight">
+\[
 Q_N = V \frac{1}{N} \sum_{i =1}^{N} q(\vec x_i) 
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>\vec x_i<span class="math notranslate nohighlight">\( are drawn from \)</span>p(\vec x)<span class="math notranslate nohighlight">\( then we again have \)</span>Q_N \to Q<span class="math notranslate nohighlight">\(.  As long as \)</span>p(\vec x)<span class="math notranslate nohighlight">\( and \)</span>q(\vec x)$ can be chosen to that they are large in the same areas, we might expect to find faster convergence to the correct answer.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\vec x_i\)</span> are drawn from <span class="math notranslate nohighlight">\(p(\vec x)\)</span> then we again have <span class="math notranslate nohighlight">\(Q_N \to Q\)</span>.  As long as <span class="math notranslate nohighlight">\(p(\vec x)\)</span> and <span class="math notranslate nohighlight">\(q(\vec x)\)</span> can be chosen to that they are large in the same areas, we might expect to find faster convergence to the correct answer.</p>
 <p>Let’s start by recalculating the volume of the sphere.  We are going to have <span class="math notranslate nohighlight">\(p(\vec x) = e^{-|\vec x|^2/(2 \sigma^2)}/\sqrt{2\pi \sigma^2}\)</span> and <span class="math notranslate nohighlight">\(f(\vec x)=1\)</span> where <span class="math notranslate nohighlight">\(x^2 \leq 1\)</span> and 0 otherwise and therefore <span class="math notranslate nohighlight">\(q(\vec x) = f(\vec x) / p(\vec x)\)</span> is <span class="math notranslate nohighlight">\(1/p(\vec x_i)\)</span> when <span class="math notranslate nohighlight">\(\vec x_i\)</span> is inside the sphere and 0 otherwise.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -763,15 +765,15 @@ where \)</span>\vec x_i<span class="math notranslate nohighlight">\( are drawn f
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.4402100331429828,
- 0.3487399121712191,
- 0.15461530107989796,
- 0.13578084224285283,
- 0.11637259619103976,
- 0.17487619123653458,
- 0.09092970424237563,
- 0.018611752239126762,
- 0.0019390985369737456]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.3250121955394216,
+ 0.38138939410334827,
+ 0.38370798064376405,
+ 0.2454601168811132,
+ 0.1746211938717253,
+ 0.11752513378163398,
+ 0.11029218008257138,
+ 0.10425109094738352,
+ 0.1466637210101815]
 </pre></div>
 </div>
 </div>
@@ -811,12 +813,12 @@ where \)</span>\vec x_i<span class="math notranslate nohighlight">\( are drawn f
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">vh</span><span class="o">/</span><span class="n">rcz751b57355h3qzj37sc3080000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_880</span><span class="o">/</span><span class="mf">1372217354.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="n">vh</span><span class="o">/</span><span class="n">rcz751b57355h3qzj37sc3080000gp</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_2193</span><span class="o">/</span><span class="mf">1372217354.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sigma_list</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">Gvol</span><span class="p">[</span><span class="n">s</span><span class="p">]</span><span class="o">=</span><span class="n">gaussvol_fast</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="n">dim</span><span class="p">,</span><span class="n">s</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">vol6flat</span><span class="o">=</span><span class="n">dvol</span><span class="p">(</span><span class="n">npoints</span><span class="p">,</span><span class="n">dim</span><span class="p">)</span>
 
-<span class="nn">/var/folders/vh/rcz751b57355h3qzj37sc3080000gp/T/ipykernel_880/353479215.py</span> in <span class="ni">dvol</span><span class="nt">(n, d)</span>
+<span class="nn">/var/folders/vh/rcz751b57355h3qzj37sc3080000gp/T/ipykernel_2193/353479215.py</span> in <span class="ni">dvol</span><span class="nt">(n, d)</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span>         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>             <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="mf">2.</span><span class="o">*</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span><span class="o">-</span><span class="mf">1.</span>
 <span class="ne">---&gt; </span><span class="mi">10</span>         <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">:</span>

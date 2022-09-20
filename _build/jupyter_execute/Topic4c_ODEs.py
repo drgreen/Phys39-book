@@ -12,11 +12,20 @@ import matplotlib.pyplot as plt
 
 # Solving equations numerically is a useful skill, but was not terribly difficult to code ourselves.  The situation quickly escalates when we move from solving algebriac equations to differential equations.  In principle we can still do it outselves but the job is definiely more complex.
 
-# We will again take an experimental approach, we will start with a problem we know how to solve and try to see what is happening.  Let's take the case of the 1d harmonic oscilator $$\ddot x + \gamma \dot x + \omega_0^2 x = 0$$
+# We will again take an experimental approach, we will start with a problem we know how to solve and try to see what is happening.  Let's take the case of the 1d harmonic oscilator 
+# 
+# $\ddot x + \gamma \dot x + \omega_0^2 x = 0$
 
 # The way that python deals with these equations is to reduce them to a coupled set of first order equations.  This is perhaps the part that is more annoying, "Why can't I just write the equation I want to solve???".  We can try to work out the advantages later, but for now you just have to deal with it.
 
-# In this case, we define it as follows:  $$\dot x = v$$ and $$\dot v = -\gamma v - \omega_0^2 x$$
+# In this case, we define it as follows:  
+# 
+# $\dot x = v$ 
+# 
+# and 
+# 
+# $\dot v = -\gamma v - \omega_0^2 x$
+# 
 # So we have two variables, position $x$ and velocity $v$, that both evolve according to first order ODEs but their evolution is coupled ($\dot v$ depends on $x$)
 
 # Now we define a function that, given a v and x, returns these derivatives:
