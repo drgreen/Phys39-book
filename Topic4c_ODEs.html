@@ -118,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Topic0_Intro.html">
-   Physics 39: Scientific Computing with Python
+   Topic 0: Introduction
   </a>
  </li>
  <li class="toctree-l1">
@@ -447,10 +447,14 @@ title="Print to PDF"
 </div>
 </div>
 <p>Solving equations numerically is a useful skill, but was not terribly difficult to code ourselves.  The situation quickly escalates when we move from solving algebriac equations to differential equations.  In principle we can still do it outselves but the job is definiely more complex.</p>
-<p>We will again take an experimental approach, we will start with a problem we know how to solve and try to see what is happening.  Let’s take the case of the 1d harmonic oscilator $<span class="math notranslate nohighlight">\(\ddot x + \gamma \dot x + \omega_0^2 x = 0\)</span>$</p>
+<p>We will again take an experimental approach, we will start with a problem we know how to solve and try to see what is happening.  Let’s take the case of the 1d harmonic oscilator</p>
+<p><span class="math notranslate nohighlight">\(\ddot x + \gamma \dot x + \omega_0^2 x = 0\)</span></p>
 <p>The way that python deals with these equations is to reduce them to a coupled set of first order equations.  This is perhaps the part that is more annoying, “Why can’t I just write the equation I want to solve???”.  We can try to work out the advantages later, but for now you just have to deal with it.</p>
-<p>In this case, we define it as follows:  $<span class="math notranslate nohighlight">\(\dot x = v\)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\(\dot v = -\gamma v - \omega_0^2 x\)</span><span class="math notranslate nohighlight">\(
-So we have two variables, position \)</span>x<span class="math notranslate nohighlight">\( and velocity \)</span>v<span class="math notranslate nohighlight">\(, that both evolve according to first order ODEs but their evolution is coupled (\)</span>\dot v<span class="math notranslate nohighlight">\( depends on \)</span>x$)</p>
+<p>In this case, we define it as follows:</p>
+<p><span class="math notranslate nohighlight">\(\dot x = v\)</span></p>
+<p>and</p>
+<p><span class="math notranslate nohighlight">\(\dot v = -\gamma v - \omega_0^2 x\)</span></p>
+<p>So we have two variables, position <span class="math notranslate nohighlight">\(x\)</span> and velocity <span class="math notranslate nohighlight">\(v\)</span>, that both evolve according to first order ODEs but their evolution is coupled (<span class="math notranslate nohighlight">\(\dot v\)</span> depends on <span class="math notranslate nohighlight">\(x\)</span>)</p>
 <p>Now we define a function that, given a v and x, returns these derivatives:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -572,7 +576,7 @@ So we have two variables, position \)</span>x<span class="math notranslate nohig
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11d2257c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11a1ae850&gt;]
 </pre></div>
 </div>
 <img alt="_images/Topic4c_ODEs_25_1.png" src="_images/Topic4c_ODEs_25_1.png" />
@@ -706,7 +710,7 @@ So we have two variables, position \)</span>x<span class="math notranslate nohig
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11d129190&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11a2c22b0&gt;]
 </pre></div>
 </div>
 <img alt="_images/Topic4c_ODEs_42_1.png" src="_images/Topic4c_ODEs_42_1.png" />
@@ -750,7 +754,7 @@ $<span class="math notranslate nohighlight">\(\ddot x +\gamma_x \dot x + \omega_
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x11ce83640&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x119e0a7f0&gt;]
 </pre></div>
 </div>
 <img alt="_images/Topic4c_ODEs_48_1.png" src="_images/Topic4c_ODEs_48_1.png" />
