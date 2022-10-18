@@ -22,7 +22,7 @@ sp.zeta(1j)
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/var/folders/vh/rcz751b57355h3qzj37sc3080000gp/T/ipykernel_753/817459801.py[0m in [0;36m<module>[0;34m[0m
+[0;32m/var/folders/vh/rcz751b57355h3qzj37sc3080000gp/T/ipykernel_71339/817459801.py[0m in [0;36m<module>[0;34m[0m
 [0;32m----> 1[0;31m [0msp[0m[0;34m.[0m[0mzeta[0m[0;34m([0m[0;36m1j[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;32m/opt/anaconda3/lib/python3.9/site-packages/scipy/special/_basic.py[0m in [0;36mzeta[0;34m(x, q, out)[0m
