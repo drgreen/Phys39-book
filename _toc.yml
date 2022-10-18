@@ -11,6 +11,7 @@ chapters:
 - file: Topic2a_numpy
 - file: Topic2b_random
 - file: Topic3_Matplotlib
+- file: Topic4a_Scipy
 - file: Topic4b_Integration
 - file: Topic4c_ODEs
 - file: Topic5_data_analysis
